@@ -1,0 +1,20 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Entornos y dependencias de desarrollo
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Registros y temporales
+*.log
+/tmp/

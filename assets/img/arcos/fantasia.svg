@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="titulo">
+  <title id="titulo">Emblema del arco La Era de la Fantasía</title>
+  <defs>
+    <radialGradient id="cielo" cx="50%" cy="42%" r="72%">
+      <stop offset="0" stop-color="#5f9f8a" stop-opacity=".26"/>
+      <stop offset=".55" stop-color="#14100f"/>
+      <stop offset="1" stop-color="#060505"/>
+    </radialGradient>
+    <filter id="halo" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <filter id="grano" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".5"/></feComponentTransfer>
+    </filter>
+    <radialGradient id="vineta" cx="50%" cy="46%" r="74%">
+      <stop offset=".5" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".8"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#cielo)"/>
+  <g aria-hidden="true"><path d="M-2 -40 L31 -40 L241 510 L208 510 Z" fill="#5f9f8a" opacity="0.033"/><path d="M520 -40 L542 -40 L752 510 L730 510 Z" fill="#5f9f8a" opacity="0.074"/><path d="M75 -40 L120 -40 L330 510 L285 510 Z" fill="#5f9f8a" opacity="0.068"/><path d="M-48 -40 L-39 -40 L171 510 L162 510 Z" fill="#5f9f8a" opacity="0.035"/><path d="M247 -40 L258 -40 L468 510 L457 510 Z" fill="#5f9f8a" opacity="0.089"/><path d="M58 -40 L101 -40 L311 510 L268 510 Z" fill="#5f9f8a" opacity="0.094"/><path d="M460 -40 L489 -40 L699 510 L670 510 Z" fill="#5f9f8a" opacity="0.098"/></g>
+  <circle cx="400" cy="210" r="132" fill="none" stroke="#5f9f8a" stroke-width="2" opacity=".35"/>
+  <circle cx="400" cy="210" r="96" fill="#5f9f8a" opacity=".12" filter="url(#halo)"/>
+  
+      <path d="M180 330 C240 300 300 320 400 300 C500 280 560 300 620 330 L620 400 L180 400 Z" fill="#080707"/>
+      <circle cx="400" cy="190" r="72" fill="#5f9f8a" opacity=".4" filter="url(#halo)"/>
+      <path d="M360 236 L400 168 L440 236 L400 216 Z" fill="#5f9f8a" opacity=".7"/>
+      <g stroke="#5f9f8a" stroke-width="2" opacity=".4">
+        <path d="M250 400 L250 320"/><path d="M550 400 L550 320"/>
+      </g>
+    
+  <g aria-hidden="true"><circle cx="641" cy="120" r="3.2" fill="#5f9f8a" opacity="0.19"/><circle cx="504" cy="377" r="4.6" fill="#5f9f8a" opacity="0.16"/><circle cx="475" cy="382" r="1.2" fill="#5f9f8a" opacity="0.27"/><circle cx="47" cy="96" r="2.4" fill="#5f9f8a" opacity="0.24"/><circle cx="277" cy="390" r="1.2" fill="#5f9f8a" opacity="0.12"/><circle cx="378" cy="127" r="3.2" fill="#5f9f8a" opacity="0.12"/><circle cx="139" cy="80" r="2.4" fill="#5f9f8a" opacity="0.19"/><circle cx="672" cy="172" r="4.6" fill="#5f9f8a" opacity="0.23"/><circle cx="66" cy="180" r="2.4" fill="#5f9f8a" opacity="0.11"/><circle cx="703" cy="293" r="3.2" fill="#5f9f8a" opacity="0.17"/><circle cx="263" cy="346" r="1.8" fill="#5f9f8a" opacity="0.25"/><circle cx="468" cy="340" r="3.2" fill="#5f9f8a" opacity="0.13"/><circle cx="362" cy="313" r="1.8" fill="#5f9f8a" opacity="0.28"/><circle cx="91" cy="26" r="6.4" fill="#5f9f8a" opacity="0.1"/><circle cx="62" cy="405" r="3.2" fill="#5f9f8a" opacity="0.28"/><circle cx="571" cy="177" r="2.4" fill="#5f9f8a" opacity="0.13"/><circle cx="403" cy="223" r="1.8" fill="#5f9f8a" opacity="0.26"/><circle cx="200" cy="111" r="4.6" fill="#5f9f8a" opacity="0.15"/><circle cx="384" cy="346" r="1.8" fill="#5f9f8a" opacity="0.18"/><circle cx="545" cy="255" r="2.4" fill="#5f9f8a" opacity="0.12"/><circle cx="215" cy="318" r="2.4" fill="#5f9f8a" opacity="0.1"/><circle cx="678" cy="226" r="1.2" fill="#5f9f8a" opacity="0.17"/><circle cx="89" cy="161" r="1.8" fill="#5f9f8a" opacity="0.28"/><circle cx="419" cy="127" r="3.2" fill="#5f9f8a" opacity="0.21"/><circle cx="328" cy="130" r="1.8" fill="#5f9f8a" opacity="0.25"/><circle cx="648" cy="250" r="3.2" fill="#5f9f8a" opacity="0.17"/></g>
+  <rect width="800" height="450" filter="url(#grano)" opacity=".18"/>
+  <rect width="800" height="450" fill="url(#vineta)"/>
+  <rect x="16" y="16" width="768" height="418" fill="none" stroke="#5f9f8a" stroke-width="1" opacity=".25"/>
+</svg>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sugerencias · Archivo del Espadachín Negro</title>
+  <meta name="description" content="Formulario de sugerencias del archivo de Berserk: validación accesible, contador de caracteres y confirmación en modal. Maquetado con Bootstrap 5.">
+  <meta name="author" content="Luis · Actividad 3.4.2">
+  <meta name="theme-color" content="#070606">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <!-- Marca que JavaScript está activo: sin él, el contenido se muestra sin animaciones. -->
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="emi-skip" href="#contenido">Saltar al contenido principal</a>
+
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top emi-navbar" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand emi-marca" href="index.html" aria-label="Archivo del Espadachín Negro, ir al inicio">
+          <svg class="emi-marca__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M60 18 L60 62"/><path d="M60 62 L38 96"/><path d="M60 62 L82 96"/><path d="M60 40 L42 28"/>
+            </g>
+          </svg>
+          <span class="emi-marca__texto">
+            <span class="emi-marca__titulo">Berserk</span>
+            <span class="emi-marca__sub">Archivo del Espadachín Negro</span>
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir o cerrar el menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="personajes.html">Personajes</a></li>
+            <li class="nav-item"><a class="nav-link" href="arcos.html">Arcos</a></li>
+            <li class="nav-item"><a class="nav-link" href="sugerencias.html" aria-current="page">Sugerencias</a></li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-sangre btn-sm px-3" href="sugerencias.html">Aportar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- ===================================================================
+         CABECERA DE PÁGINA
+         =================================================================== -->
+    <section class="emi-cabecera-pagina">
+      <div class="container">
+        <nav aria-label="Ruta de navegación">
+          <ol class="breadcrumb emi-breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Sugerencias</li>
+          </ol>
+        </nav>
+
+        <div class="row gy-4 align-items-end">
+          <div class="col-12 col-lg-8">
+            <p class="emi-eyebrow">Tu turno · formulario</p>
+            <h1 class="display-5 mb-3">Sugerencias y correcciones</h1>
+            <p class="emi-seccion__intro mb-0">
+              ¿Falta un personaje, un arco o un dato está mal? Cuéntalo aquí. La validación
+              ocurre en tu navegador: este formulario es una demostración de la actividad y
+              no envía información a ningún servidor.
+            </p>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
+              <span class="emi-chip">Validación accesible</span>
+              <span class="emi-chip">Sin envío real</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         FORMULARIO + AYUDA
+         =================================================================== -->
+    <section class="pb-5" aria-labelledby="tituloFormulario">
+      <div class="container">
+        <div class="row g-4 g-lg-5">
+          <div class="col-12 col-lg-8">
+            <h2 class="visually-hidden" id="tituloFormulario">Formulario de sugerencias</h2>
+
+            <!-- Resumen de errores: se rellena con JavaScript y recibe el foco. -->
+            <div class="alert alert-danger bg-transparent border-danger-subtle" id="resumenErrores"
+                 role="alert" aria-live="assertive" tabindex="-1" hidden>
+              <p class="fw-semibold mb-2">Revisa estos puntos antes de continuar:</p>
+              <ul class="mb-0 small" id="listaErrores"></ul>
+            </div>
+
+            <form id="formularioSugerencia" class="emi-formulario" novalidate>
+              <div class="row g-4">
+                <!-- Datos de contacto -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="nombre">
+                    Nombre <span class="emi-obligatorio" aria-hidden="true">*</span>
+                  </label>
+                  <input type="text" class="form-control" id="nombre" name="nombre"
+                         autocomplete="name" minlength="3" maxlength="60" required
+                         aria-describedby="ayudaNombre">
+                  <p class="form-text" id="ayudaNombre">Al menos 3 caracteres. Puede ser un alias.</p>
+                  <div class="invalid-feedback">Escribe un nombre de 3 a 60 caracteres.</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="correo">
+                    Correo electrónico <span class="emi-obligatorio" aria-hidden="true">*</span>
+                  </label>
+                  <input type="email" class="form-control" id="correo" name="correo"
+                         autocomplete="email" maxlength="120" required
+                         placeholder="nombre@ejemplo.com" aria-describedby="ayudaCorreo">
+                  <p class="form-text" id="ayudaCorreo">Solo se usa para responderte. No se envía nada.</p>
+                  <div class="invalid-feedback">Introduce un correo con formato válido.</div>
+                </div>
+
+                <!-- Clasificación -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="tipo">
+                    Tipo de aporte <span class="emi-obligatorio" aria-hidden="true">*</span>
+                  </label>
+                  <select class="form-select" id="tipo" name="tipo" required aria-describedby="ayudaTipo">
+                    <option value="" selected disabled>Selecciona una opción…</option>
+                    <option value="personaje">Nuevo personaje</option>
+                    <option value="correccion">Corrección de datos</option>
+                    <option value="arco">Arco o cronología</option>
+                    <option value="diseno">Diseño y accesibilidad</option>
+                    <option value="otro">Otro tema</option>
+                  </select>
+                  <p class="form-text" id="ayudaTipo">Elige la categoría que mejor describa tu aporte.</p>
+                  <div class="invalid-feedback">Selecciona el tipo de sugerencia.</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="personaje">Personaje relacionado</label>
+                  <select class="form-select" id="personaje" name="personaje" aria-describedby="ayudaPersonaje">
+                    <option value="">Sin preferencia</option>
+                    <!-- Opciones generadas desde datos.js -->
+                  </select>
+                  <p class="form-text" id="ayudaPersonaje">Opcional: ayuda a ubicar tu aporte.</p>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="arco">Arco relacionado</label>
+                  <select class="form-select" id="arco" name="arco">
+                    <option value="">Sin preferencia</option>
+                    <!-- Opciones generadas desde datos.js -->
+                  </select>
+                </div>
+
+                <!-- Valoración -->
+                <div class="col-12 col-md-6">
+                  <fieldset class="mb-0" id="grupoValoracion">
+                    <legend class="form-label">
+                      Valoración de la obra <span class="emi-obligatorio" aria-hidden="true">*</span>
+                    </legend>
+                    <div class="emi-estrellas" aria-describedby="valoracionTexto">
+                      <input type="radio" id="estrella5" name="valoracion" value="5" required>
+                      <label for="estrella5">★<span class="visually-hidden">5 de 5, imprescindible</span></label>
+                      <input type="radio" id="estrella4" name="valoracion" value="4">
+                      <label for="estrella4">★<span class="visually-hidden">4 de 5, notable</span></label>
+                      <input type="radio" id="estrella3" name="valoracion" value="3">
+                      <label for="estrella3">★<span class="visually-hidden">3 de 5, correcto</span></label>
+                      <input type="radio" id="estrella2" name="valoracion" value="2">
+                      <label for="estrella2">★<span class="visually-hidden">2 de 5, flojo</span></label>
+                      <input type="radio" id="estrella1" name="valoracion" value="1">
+                      <label for="estrella1">★<span class="visually-hidden">1 de 5, muy flojo</span></label>
+                    </div>
+                    <p class="form-text mb-0" id="valoracionTexto" aria-live="polite">Sin valorar</p>
+                  </fieldset>
+                </div>
+
+                <!-- Mensaje -->
+                <div class="col-12">
+                  <label class="form-label" for="mensaje">
+                    Tu sugerencia <span class="emi-obligatorio" aria-hidden="true">*</span>
+                  </label>
+                  <textarea class="form-control" id="mensaje" name="mensaje" rows="5"
+                            minlength="20" maxlength="600" required
+                            aria-describedby="ayudaMensaje contadorMensaje"
+                            placeholder="Cuéntanos qué cambiarías y por qué…"></textarea>
+                  <div class="d-flex justify-content-between gap-3 mt-1">
+                    <p class="form-text mb-0" id="ayudaMensaje">
+                      Entre 20 y 600 caracteres. Evita copiar texto de otras fuentes.
+                    </p>
+                    <p class="emi-contador-caracteres mb-0" id="contadorMensaje" aria-live="off">0 / 600</p>
+                  </div>
+                  <div class="invalid-feedback">La sugerencia debe tener entre 20 y 600 caracteres.</div>
+                </div>
+
+                <!-- Consentimientos -->
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="spoilers" name="spoilers">
+                    <label class="form-check-label" for="spoilers">
+                      Mi aporte menciona detalles que podrían considerarse spoilers.
+                    </label>
+                  </div>
+                  <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="autorizacion" name="autorizacion" required>
+                    <label class="form-check-label" for="autorizacion">
+                      Autorizo el uso educativo de este aporte dentro del proyecto.
+                      <span class="emi-obligatorio" aria-hidden="true">*</span>
+                    </label>
+                    <div class="invalid-feedback">Debes autorizar el uso educativo del aporte.</div>
+                  </div>
+                </div>
+
+                <!-- Acciones -->
+                <div class="col-12">
+                  <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-3 pt-2">
+                    <button class="btn btn-sangre" type="submit">Enviar sugerencia</button>
+                    <button class="btn btn-fantasma" type="reset">Limpiar formulario</button>
+                    <p class="small emi-texto-tenue mb-0 ms-sm-auto" id="estadoEnvio" aria-live="polite"></p>
+                  </div>
+                  <p class="form-text mt-3 mb-0">
+                    Los campos marcados con <span class="emi-obligatorio">*</span> son obligatorios.
+                    No se realiza ninguna petición de red: la confirmación es local.
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Ayuda lateral -->
+          <aside class="col-12 col-lg-4" aria-labelledby="tituloAyuda">
+            <div class="emi-toolbar mb-4">
+              <h2 class="h5 mb-3" id="tituloAyuda">Antes de enviar</h2>
+              <ul class="emi-lista-habilidades mb-0">
+                <li>Comprueba si el personaje ya tiene ficha en el archivo.</li>
+                <li>Indica el tomo o el arco si propones una corrección.</li>
+                <li>Marca la casilla de spoilers cuando corresponda.</li>
+                <li>Escribe en español y con buena ortografía.</li>
+              </ul>
+            </div>
+
+            <div class="emi-toolbar mb-4">
+              <h2 class="h5 mb-3">Qué se revisa</h2>
+              <dl class="emi-lista-datos mb-0">
+                <li><span>Personajes</span><span>Fichas y retratos</span></li>
+                <li><span>Arcos</span><span>Cronología y tomos</span></li>
+                <li><span>Diseño</span><span>Rejilla y responsive</span></li>
+                <li><span>Accesibilidad</span><span>Contraste y teclado</span></li>
+              </dl>
+            </div>
+
+            <div class="emi-toolbar">
+              <h2 class="h5 mb-2">Privacidad</h2>
+              <p class="small emi-texto-tenue mb-0">
+                Los datos se quedan en tu navegador. Al cerrar o recargar la página
+                desaparecen: no hay base de datos ni envío por correo.
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        <!-- ===============================================================
+             PREGUNTAS FRECUENTES
+             =============================================================== -->
+        <div class="row mt-5 pt-4 border-top border-secondary-subtle">
+          <div class="col-12 col-lg-8">
+            <p class="emi-eyebrow">Dudas</p>
+            <h2 class="emi-titulo h3 mb-4">Preguntas frecuentes</h2>
+
+            <div class="accordion accordion-archivo" id="acordeonDudas">
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="dudaUnoCabecera">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#dudaUno" aria-expanded="true" aria-controls="dudaUno">
+                    ¿Se envía realmente mi sugerencia?
+                  </button>
+                </h3>
+                <div id="dudaUno" class="accordion-collapse collapse show"
+                     aria-labelledby="dudaUnoCabecera" data-bs-parent="#acordeonDudas">
+                  <div class="accordion-body">
+                    No. Es un ejercicio de maquetación: el formulario valida los campos,
+                    muestra un resumen en un modal y reinicia el formulario. No hay servidor
+                    ni petición de red.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="dudaDosCabecera">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#dudaDos" aria-expanded="false" aria-controls="dudaDos">
+                    ¿Por qué se pide una valoración?
+                  </button>
+                </h3>
+                <div id="dudaDos" class="accordion-collapse collapse"
+                     aria-labelledby="dudaDosCabecera" data-bs-parent="#acordeonDudas">
+                  <div class="accordion-body">
+                    Para demostrar el componente de selección única con etiquetas asociadas.
+                    Las estrellas son botones de radio agrupados: funcionan con teclado y
+                    anuncian su estado a los lectores de pantalla.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="dudaTresCabecera">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#dudaTres" aria-expanded="false" aria-controls="dudaTres">
+                    ¿Qué pasa si dejo un campo obligatorio vacío?
+                  </button>
+                </h3>
+                <div id="dudaTres" class="accordion-collapse collapse"
+                     aria-labelledby="dudaTresCabecera" data-bs-parent="#acordeonDudas">
+                  <div class="accordion-body">
+                    El formulario se marca como inválido, aparece un resumen con los problemas
+                    detectados y el foco se mueve al primer campo que necesita atención. Cada
+                    campo conserva además su propio mensaje de error.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="dudaCuatroCabecera">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#dudaCuatro" aria-expanded="false" aria-controls="dudaCuatro">
+                    ¿Puedo usar el proyecto como plantilla?
+                  </button>
+                </h3>
+                <div id="dudaCuatro" class="accordion-collapse collapse"
+                     aria-labelledby="dudaCuatroCabecera" data-bs-parent="#acordeonDudas">
+                  <div class="accordion-body">
+                    Puedes reutilizar la estructura, la hoja de estilos y los scripts citando
+                    la fuente. Las ilustraciones de <em>Berserk</em> no son libres: pertenecen
+                    a sus autores y aquí solo se usan con fines educativos.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       MODAL DE CONFIRMACIÓN
+       ===================================================================== -->
+  <div class="modal fade modal-archivo" id="modalEnvio" tabindex="-1" aria-labelledby="modalEnvioLabel">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <p class="emi-texto-oro emi-mini mb-1">Registro local</p>
+            <h2 class="modal-title h3" id="modalEnvioLabel">Sugerencia preparada</h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar la confirmación"></button>
+        </div>
+
+        <div class="modal-body">
+          <p class="small emi-texto-tenue">
+            Esto es una simulación: no se ha enviado nada. Este es el resumen que se habría
+            registrado.
+          </p>
+
+          <dl class="emi-lista-datos mb-0">
+            <li><dt>Nombre</dt><dd id="envioNombre">—</dd></li>
+            <li><dt>Tipo</dt><dd id="envioTipo">—</dd></li>
+            <li><dt>Personaje</dt><dd id="envioPersonaje">—</dd></li>
+            <li><dt>Arco</dt><dd id="envioArco">—</dd></li>
+            <li><dt>Valoración</dt><dd id="envioValoracion">—</dd></li>
+          </dl>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sangre btn-sm" data-bs-dismiss="modal">Entendido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       PIE DE PÁGINA
+       ===================================================================== -->
+  <footer class="emi-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-lg-5">
+          <a class="emi-marca mb-3" href="index.html" aria-label="Archivo del Espadachín Negro, ir al inicio">
+            <svg class="emi-marca__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M60 18 L60 62"/><path d="M60 62 L38 96"/><path d="M60 62 L82 96"/><path d="M60 40 L42 28"/>
+              </g>
+            </svg>
+            <span class="emi-marca__texto">
+              <span class="emi-marca__titulo">Berserk</span>
+              <span class="emi-marca__sub">Archivo del Espadachín Negro</span>
+            </span>
+          </a>
+          <p class="small mb-0">
+            Proyecto académico de maquetación con Bootstrap. Sin ánimo de lucro y sin
+            afiliación con los titulares de la obra.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2>Archivo</h2>
+          <ul class="emi-footer__lista">
+            <li><a href="personajes.html">Personajes</a></li>
+            <li><a href="arcos.html">Arcos</a></li>
+            <li><a href="sugerencias.html">Sugerencias</a></li>
+            <li><a href="index.html#tecnica">Ficha técnica</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2>Recursos</h2>
+          <ul class="emi-footer__lista">
+            <li><a href="https://getbootstrap.com/docs/5.3/" target="_blank" rel="noopener noreferrer">Documentación de Bootstrap</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1</a></li>
+            <li><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">Validador HTML</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-3">
+          <h2>Estado del proyecto</h2>
+          <p class="small mb-2">Bootstrap 5.3.3 · HTML5 · CSS3 · JavaScript sin dependencias extra.</p>
+          <p class="small mb-0">
+            Contenido revisado en <time datetime="2026-10-26">octubre de 2026</time>.
+          </p>
+        </div>
+      </div>
+
+      <p class="emi-footer__legal mb-0">
+        <strong>Berserk</strong> es una obra de Kentaro Miura, continuada por Studio Gaga y
+        Kouji Mori. Los personajes y las ilustraciones pertenecen a sus autores y se emplean
+        aquí únicamente con fines educativos. Los emblemas, la escena de portada y el
+        logotipo son ilustraciones vectoriales propias. © <span data-anio>2026</span> ·
+        Actividad 3.4.2.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/datos.js"></script>
+  <script src="assets/js/comun.js"></script>
+  <script src="assets/js/formulario.js"></script>
+</body>
+</html>

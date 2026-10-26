@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Archivo del Espadachín Negro · Wiki de Berserk</title>
+  <meta name="description" content="Archivo ilustrado de Berserk: personajes, arcos argumentales y formulario de sugerencias. Interfaz responsiva construida con Bootstrap 5.3.3 para la actividad 3.4.2.">
+  <meta name="author" content="Luis · Actividad 3.4.2">
+  <meta name="theme-color" content="#070606">
+
+  <!-- Open Graph: cómo se verá el enlace al compartirlo -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Archivo del Espadachín Negro · Wiki de Berserk">
+  <meta property="og:description" content="Personajes, arcos y formularios de una wiki temática de Berserk hecha con Bootstrap.">
+  <meta property="og:image" content="assets/img/heroe.svg">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Tipografías: Cinzel para títulos e Inter para texto. Si no hay conexión,
+       el navegador usa las familias de reserva declaradas en la hoja de estilos. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 alojado en el propio proyecto: funciona sin conexión. -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <!-- Marca que JavaScript está activo: sin él, el contenido se muestra sin animaciones. -->
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="emi-skip" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- =====================================================================
+       CABECERA Y NAVEGACIÓN
+       ===================================================================== -->
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top emi-navbar" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand emi-marca" href="index.html" aria-label="Archivo del Espadachín Negro, ir al inicio">
+          <svg class="emi-marca__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M60 18 L60 62"/><path d="M60 62 L38 96"/><path d="M60 62 L82 96"/><path d="M60 40 L42 28"/>
+            </g>
+          </svg>
+          <span class="emi-marca__texto">
+            <span class="emi-marca__titulo">Berserk</span>
+            <span class="emi-marca__sub">Archivo del Espadachín Negro</span>
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir o cerrar el menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+            <li class="nav-item"><a class="nav-link" href="index.html" aria-current="page">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="personajes.html">Personajes</a></li>
+            <li class="nav-item"><a class="nav-link" href="arcos.html">Arcos</a></li>
+            <li class="nav-item"><a class="nav-link" href="sugerencias.html">Sugerencias</a></li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-sangre btn-sm px-3" href="sugerencias.html">Aportar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- ===================================================================
+         PORTADA
+         =================================================================== -->
+    <section class="emi-hero" aria-labelledby="tituloPortada">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg-10 col-xl-8">
+            <div class="emi-hero__contenido">
+              <p class="emi-eyebrow">Actividad 3.4.2 · Bootstrap 5</p>
+              <h1 id="tituloPortada">El archivo de un mundo <em>sin piedad</em></h1>
+              <p class="emi-hero__entradilla">
+                Personajes, arcos y heridas que no cierran. Una wiki temática de
+                <cite>Berserk</cite> construida con la rejilla, los componentes y las utilidades
+                de Bootstrap, pensada para leerse igual de bien en un móvil que en un monitor.
+              </p>
+
+              <div class="d-flex flex-column flex-sm-row gap-3 emi-acciones">
+                <a class="btn btn-sangre" href="personajes.html">Explorar personajes</a>
+                <a class="btn btn-fantasma" href="arcos.html">Recorrer los arcos</a>
+              </div>
+
+              <ul class="emi-chips" aria-label="Datos del proyecto">
+                <li class="emi-chip">16 personajes</li>
+                <li class="emi-chip">6 arcos</li>
+                <li class="emi-chip">Desde 320 px</li>
+                <li class="emi-chip">Accesibilidad AA</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         CIFRAS DEL ARCHIVO
+         =================================================================== -->
+    <section class="emi-seccion--alterna py-4 py-md-5" aria-label="Cifras del archivo">
+      <div class="container">
+        <div class="row g-0">
+          <div class="col-6 col-lg-3">
+            <div class="emi-dato reveal">
+              <p class="emi-dato__cifra">16</p>
+              <p class="emi-dato__texto">Personajes documentados</p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="emi-dato reveal">
+              <p class="emi-dato__cifra">06</p>
+              <p class="emi-dato__texto">Arcos y puntos de giro</p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="emi-dato reveal">
+              <p class="emi-dato__cifra">05</p>
+              <p class="emi-dato__texto">Facciones enfrentadas</p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="emi-dato reveal">
+              <p class="emi-dato__cifra">01</p>
+              <p class="emi-dato__texto">Marca que lo cambió todo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         PERSONAJES DESTACADOS
+         =================================================================== -->
+    <section class="emi-seccion" id="destacados" aria-labelledby="tituloDestacados">
+      <div class="container">
+        <div class="row align-items-end gy-4 mb-4 mb-lg-5">
+          <div class="col-12 col-lg-8">
+            <p class="emi-eyebrow">El archivo</p>
+            <h2 class="emi-titulo" id="tituloDestacados">Tres nombres, una tragedia</h2>
+            <p class="emi-seccion__intro mb-0">
+              El mercenario que sobrevivió, el líder que lo vendió todo y la capitana
+              que sostuvo la banda hasta el último segundo. La ficha completa de cada
+              personaje está a un clic.
+            </p>
+            <hr class="emi-filete">
+          </div>
+          <div class="col-12 col-lg-4 text-lg-end">
+            <a class="btn btn-fantasma" href="personajes.html">Ver los 16 personajes</a>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4 reveal">
+            <article class="card-archivo">
+              <div class="card-archivo__media">
+                <img src="assets/img/personajes/guts.jpg" alt="Guts, el Espadachín Negro, con su armadura y su enorme espada"
+                     width="400" height="500" loading="lazy" decoding="async">
+                <span class="emi-badge emi-badge--guts emi-badge--posicion">Compañía de Guts</span>
+              </div>
+              <div class="card-archivo__cuerpo">
+                <h3 class="card-archivo__nombre">Guts</h3>
+                <p class="card-archivo__epiteto">El Espadachín Negro</p>
+                <p class="card-archivo__resumen">
+                  Único superviviente del Eclipse que no vendió su alma. Arrastra la marca
+                  de sacrificio y un mandoble demasiado grande para cualquier otra persona.
+                </p>
+                <div class="card-archivo__pie">
+                  <span class="emi-estado emi-estado--vivo">Vivo</span>
+                  <a class="btn-enlace" href="personajes.html#guts">Ver ficha</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 reveal">
+            <article class="card-archivo">
+              <div class="card-archivo__media">
+                <img src="assets/img/personajes/griffith.jpg" alt="Griffith, el Halcón Blanco, con armadura blanca y espada"
+                     width="400" height="500" loading="lazy" decoding="async">
+                <span class="emi-badge emi-badge--halcon emi-badge--posicion">Banda del Halcón</span>
+              </div>
+              <div class="card-archivo__cuerpo">
+                <h3 class="card-archivo__nombre">Griffith</h3>
+                <p class="card-archivo__epiteto">El Halcón Blanco</p>
+                <p class="card-archivo__resumen">
+                  Un estratega de belleza inquietante capaz de convertir a un puñado de
+                  marginados en el ejército más temido del reino. Su sueño tiene un precio.
+                </p>
+                <div class="card-archivo__pie">
+                  <span class="emi-estado emi-estado--vivo">Vivo</span>
+                  <a class="btn-enlace" href="personajes.html#griffith">Ver ficha</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 reveal">
+            <article class="card-archivo">
+              <div class="card-archivo__media">
+                <img src="assets/img/personajes/casca.jpg" alt="Casca junto a Puck, con su armadura y mirada cansada"
+                     width="400" height="500" loading="lazy" decoding="async">
+                <span class="emi-badge emi-badge--halcon emi-badge--posicion">Banda del Halcón</span>
+              </div>
+              <div class="card-archivo__cuerpo">
+                <h3 class="card-archivo__nombre">Casca</h3>
+                <p class="card-archivo__epiteto">La Capitana de la Banda</p>
+                <p class="card-archivo__resumen">
+                  La única mujer en la primera línea de la Banda del Halcón, y probablemente
+                  la más competente con una espada. Su vínculo con Guts cambia el rumbo.
+                </p>
+                <div class="card-archivo__pie">
+                  <span class="emi-estado emi-estado--vivo">Vivo</span>
+                  <a class="btn-enlace" href="personajes.html#casca">Ver ficha</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         ARCOS DESTACADOS
+         =================================================================== -->
+    <section class="emi-seccion emi-seccion--alterna" id="arcos-destacados" aria-labelledby="tituloArcos">
+      <div class="container">
+        <div class="row align-items-end gy-4 mb-4 mb-lg-5">
+          <div class="col-12 col-lg-8">
+            <p class="emi-eyebrow">La cronología</p>
+            <h2 class="emi-titulo" id="tituloArcos">Seis estaciones hasta el abismo</h2>
+            <p class="emi-seccion__intro mb-0">
+              De la venganza solitaria al mundo de la fantasía. Cada emblema resume un
+              tramo del relato y avisa cuando contiene spoilers.
+            </p>
+            <hr class="emi-filete">
+          </div>
+          <div class="col-12 col-lg-4 text-lg-end">
+            <a class="btn btn-fantasma" href="arcos.html">Ver la cronología completa</a>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-md-4 reveal">
+            <article class="arco h-100 d-flex flex-column">
+              <div class="arco__imagen mb-3">
+                <img src="assets/img/arcos/edad-dorada.svg" alt="Emblema con la silueta de un halcón"
+                     width="800" height="450" loading="lazy" decoding="async">
+              </div>
+              <p class="arco__meta">Arco II · Edad Dorada</p>
+              <h3 class="arco__titulo">El sueño de un reino</h3>
+              <p class="emi-texto-tenue small mb-3">
+                La banda que lo tenía todo a un paso de conseguirlo, contada desde el
+                principio para que la caída duela más.
+              </p>
+              <a class="btn-enlace mt-auto align-self-start" href="arcos.html#edad-dorada">Leer el arco</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-4 reveal">
+            <article class="arco h-100 d-flex flex-column">
+              <div class="arco__imagen mb-3">
+                <img src="assets/img/arcos/eclipse.svg" alt="Emblema de un eclipse con corona de rayos"
+                     width="800" height="450" loading="lazy" decoding="async">
+              </div>
+              <p class="arco__meta">Arco III · El Eclipse</p>
+              <h3 class="arco__titulo">El contrato</h3>
+              <p class="emi-texto-tenue small mb-3">
+                El ritual que parte la historia en dos y convierte a los compañeros en
+                moneda de cambio. Contiene spoilers mayores.
+              </p>
+              <a class="btn-enlace mt-auto align-self-start" href="arcos.html#eclipse">Leer el arco</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-4 reveal">
+            <article class="arco h-100 d-flex flex-column">
+              <div class="arco__imagen mb-3">
+                <img src="assets/img/arcos/halcon-milenario.svg" alt="Emblema con un árbol y una luna creciente"
+                     width="800" height="450" loading="lazy" decoding="async">
+              </div>
+              <p class="arco__meta">Arco V · Halcón Milenario</p>
+              <h3 class="arco__titulo">La armadura que devora</h3>
+              <p class="emi-texto-tenue small mb-3">
+                Griffith construye su reino mientras Guts se enfunda la armadura berserker
+                y descubre que la fuerza también se paga.
+              </p>
+              <a class="btn-enlace mt-auto align-self-start" href="arcos.html#halcon-milenario">Leer el arco</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         CÓMO ESTÁ CONSTRUIDO (rastro técnico para la evaluación)
+         =================================================================== -->
+    <section class="emi-seccion" id="tecnica" aria-labelledby="tituloTecnica">
+      <div class="container">
+        <div class="row gy-4 mb-4 mb-lg-5">
+          <div class="col-12 col-lg-8">
+            <p class="emi-eyebrow">Bajo el capó</p>
+            <h2 class="emi-titulo" id="tituloTecnica">Bootstrap haciendo el trabajo pesado</h2>
+            <p class="emi-seccion__intro mb-0">
+              La rejilla de 12 columnas, las utilidades de espaciado y flex, el sistema de
+              formularios y los componentes interactivos vienen de Bootstrap. La capa
+              propia solo aporta el tema visual y tres módulos de JavaScript.
+            </p>
+            <hr class="emi-filete">
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-md-4 reveal">
+            <div class="h-100 p-4 border border-secondary-subtle rounded-1">
+              <p class="emi-mini emi-texto-oro mb-2">01 · Rejilla</p>
+              <h3 class="h5 mb-2">Del móvil al escritorio</h3>
+              <p class="emi-texto-tenue small mb-0">
+                Una, dos, tres o cuatro tarjetas por fila según el ancho
+                (<code>.col-12 .col-sm-6 .col-lg-4 .col-xxl-3</code>). Sin media queries
+                propias para la estructura.
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 reveal">
+            <div class="h-100 p-4 border border-secondary-subtle rounded-1">
+              <p class="emi-mini emi-texto-oro mb-2">02 · Componentes</p>
+              <h3 class="h5 mb-2">Navegación, tarjetas y modales</h3>
+              <p class="emi-texto-tenue small mb-0">
+                Barra colapsable, tarjetas con insignias, modales con foco atrapado,
+                acordeones con aviso de spoilers, paginación y formularios validados.
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 reveal">
+            <div class="h-100 p-4 border border-secondary-subtle rounded-1">
+              <p class="emi-mini emi-texto-oro mb-2">03 · Accesibilidad</p>
+              <h3 class="h5 mb-2">Pensado para todas las personas</h3>
+              <p class="emi-texto-tenue small mb-0">
+                Enlace de salto, jerarquía de encabezados, etiquetas asociadas, mensajes
+                anunciados con <code>aria-live</code>, contraste suficiente y respeto a
+                <code>prefers-reduced-motion</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         LLAMADA A LA ACCIÓN
+         =================================================================== -->
+    <section class="py-5" aria-labelledby="tituloCta">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-12 col-lg-8 reveal">
+            <p class="emi-eyebrow justify-content-center">Tu turno</p>
+            <h2 class="emi-titulo" id="tituloCta">¿Falta alguien en el archivo?</h2>
+            <p class="emi-seccion__intro mx-auto mb-4">
+              Propón un personaje, corrige un dato o sugiere un arco. El formulario valida
+              los campos antes de enviar y te muestra un resumen de tu aporte.
+            </p>
+            <a class="btn btn-sangre" href="sugerencias.html">Enviar una sugerencia</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       PIE DE PÁGINA
+       ===================================================================== -->
+  <footer class="emi-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-lg-5">
+          <a class="emi-marca mb-3" href="index.html" aria-label="Archivo del Espadachín Negro, ir al inicio">
+            <svg class="emi-marca__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M60 18 L60 62"/><path d="M60 62 L38 96"/><path d="M60 62 L82 96"/><path d="M60 40 L42 28"/>
+              </g>
+            </svg>
+            <span class="emi-marca__texto">
+              <span class="emi-marca__titulo">Berserk</span>
+              <span class="emi-marca__sub">Archivo del Espadachín Negro</span>
+            </span>
+          </a>
+          <p class="small mb-0">
+            Proyecto académico de maquetación con Bootstrap. Sin ánimo de lucro y sin
+            afiliación con los titulares de la obra.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2>Archivo</h2>
+          <ul class="emi-footer__lista">
+            <li><a href="personajes.html">Personajes</a></li>
+            <li><a href="arcos.html">Arcos</a></li>
+            <li><a href="sugerencias.html">Sugerencias</a></li>
+            <li><a href="index.html#tecnica">Ficha técnica</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2>Recursos</h2>
+          <ul class="emi-footer__lista">
+            <li><a href="https://getbootstrap.com/docs/5.3/" target="_blank" rel="noopener noreferrer">Documentación de Bootstrap</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1</a></li>
+            <li><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">Validador HTML</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-3">
+          <h2>Estado del proyecto</h2>
+          <p class="small mb-2">Bootstrap 5.3.3 · HTML5 · CSS3 · JavaScript sin dependencias extra.</p>
+          <p class="small mb-0">
+            Contenido revisado en <time datetime="2026-10-26">octubre de 2026</time>.
+          </p>
+        </div>
+      </div>
+
+      <p class="emi-footer__legal mb-0">
+        <strong>Berserk</strong> es una obra de Kentaro Miura, continuada por Studio Gaga y
+        Kouji Mori. Los personajes y las ilustraciones pertenecen a sus autores y se emplean
+        aquí únicamente con fines educativos. Los emblemas, la escena de portada y el
+        logotipo son ilustraciones vectoriales propias. © <span data-anio>2026</span> ·
+        Actividad 3.4.2.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/datos.js"></script>
+  <script src="assets/js/comun.js"></script>
+</body>
+</html>

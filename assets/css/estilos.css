@@ -1,0 +1,1038 @@
+/* ==========================================================================
+   ARCHIVO DEL ESPADACHÍN NEGRO — hoja de estilos principal
+   Actividad 3.4.2 · Bootstrap 5.3.3
+   --------------------------------------------------------------------------
+   Organización:
+     01. Tokens de diseño (variables)
+     02. Base y tipografía
+     03. Utilidades propias
+     04. Navegación
+     05. Botones y enlaces
+     06. Portada (hero)
+     07. Secciones y títulos
+     08. Tarjetas de personaje
+     09. Barra de filtros y paginación
+     10. Tabla comparativa
+     11. Arcos argumentales
+     12. Formularios
+     13. Modales
+     14. Pie de página
+     15. Animaciones y accesibilidad
+     16. Ajustes responsive
+   ========================================================================== */
+
+/* 01. TOKENS DE DISEÑO ==================================================== */
+:root {
+  /* Paleta: carbón, hierro, sangre seca y hueso. */
+  --emi-tinta: #070606;
+  --emi-carbon: #0e0b0a;
+  --emi-superficie: #14100e;
+  --emi-hierro: #1d1815;
+  --emi-borde: #2e2622;
+  --emi-borde-claro: #453a34;
+  --emi-sangre: #9c1219;
+  --emi-sangre-oscura: #6d0b11;
+  --emi-brasa: #e0313a;
+  --emi-brasa-clara: #ff7a80;
+  --emi-oro: #c9a24a;
+  --emi-hueso: #efe7d8;
+  --emi-ceniza: #b5a89a;
+  --emi-ceniza-oscura: #857a6f;
+
+  /* Tipografía */
+  --emi-display: "Cinzel", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --emi-texto: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Medidas */
+  --emi-radio: 2px;
+  --emi-sombra: 0 22px 48px -26px rgba(0, 0, 0, .95);
+  --emi-transicion: 220ms ease;
+
+  /* Ajustes de Bootstrap */
+  --bs-body-bg: var(--emi-tinta);
+  --bs-body-color: var(--emi-hueso);
+  --bs-body-font-family: var(--emi-texto);
+  --bs-border-color: var(--emi-borde);
+  --bs-link-color: var(--emi-brasa-clara);
+  --bs-link-hover-color: #ffb0b4;
+  --bs-emphasis-color: var(--emi-hueso);
+  --bs-secondary-color: var(--emi-ceniza);
+  --bs-tertiary-bg: var(--emi-superficie);
+  --bs-focus-ring-color: rgba(224, 49, 58, .35);
+}
+
+/* 02. BASE Y TIPOGRAFÍA =================================================== */
+html {
+  scroll-behavior: smooth;
+  /* Compensa la barra de navegación fija al saltar a un ancla. */
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background-color: var(--emi-tinta);
+  /* Viñeta + trama fina: textura de papel viejo sin cargar imágenes. */
+  background-image:
+    radial-gradient(1200px 620px at 50% -10%, rgba(156, 18, 25, .16), transparent 70%),
+    radial-gradient(900px 500px at 100% 100%, rgba(201, 162, 74, .05), transparent 70%),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, .014) 0 2px, transparent 2px 4px);
+  color: var(--emi-hueso);
+  font-family: var(--emi-texto);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .emi-display {
+  font-family: var(--emi-display);
+  font-weight: 700;
+  letter-spacing: .015em;
+  line-height: 1.1;
+  color: var(--emi-hueso);
+  text-wrap: balance;
+}
+
+p { text-wrap: pretty; }
+
+strong { color: #fff8ec; }
+
+::selection {
+  background: var(--emi-sangre);
+  color: #fff;
+}
+
+/* Enlace de salto para lectores de pantalla y teclado. */
+.emi-skip {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 2000;
+  padding: .7rem 1.1rem;
+  background: var(--emi-brasa);
+  color: #17090a;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--emi-radio);
+}
+.emi-skip:focus { top: 1rem; }
+
+/* 03. UTILIDADES PROPIAS ================================================== */
+.emi-borde-sup { border-top: 1px solid var(--emi-borde); }
+.emi-texto-tenue { color: var(--emi-ceniza) !important; }
+.emi-texto-oro { color: var(--emi-oro) !important; }
+.emi-texto-brasa { color: var(--emi-brasa-clara) !important; }
+.emi-max-lectura { max-width: 68ch; }
+.emi-mini {
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* 04. NAVEGACIÓN ========================================================== */
+.emi-navbar {
+  background: rgba(7, 6, 6, .82);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(224, 49, 58, .22);
+  transition: background var(--emi-transicion), box-shadow var(--emi-transicion);
+}
+
+.emi-navbar.is-scrolled {
+  background: rgba(7, 6, 6, .96);
+  box-shadow: 0 12px 30px -20px #000;
+}
+
+.emi-marca {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  color: var(--emi-hueso);
+  text-decoration: none;
+}
+
+.emi-marca__sello {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  color: var(--emi-brasa);
+  filter: drop-shadow(0 0 10px rgba(224, 49, 58, .5));
+}
+
+.emi-marca__texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.emi-marca__titulo {
+  font-family: var(--emi-display);
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+}
+
+.emi-marca__sub {
+  margin-top: .35rem;
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--emi-ceniza-oscura);
+}
+
+.emi-navbar .nav-link {
+  color: var(--emi-ceniza);
+  font-size: .76rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .65rem .15rem;
+  position: relative;
+}
+
+.emi-navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: .2rem;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--emi-brasa), transparent);
+  transition: width var(--emi-transicion);
+}
+
+.emi-navbar .nav-link:hover,
+.emi-navbar .nav-link:focus-visible,
+.emi-navbar .nav-link[aria-current="page"] {
+  color: var(--emi-hueso);
+}
+
+.emi-navbar .nav-link:hover::after,
+.emi-navbar .nav-link:focus-visible::after,
+.emi-navbar .nav-link[aria-current="page"]::after {
+  width: 100%;
+}
+
+.emi-navbar .navbar-toggler {
+  border: 1px solid var(--emi-borde-claro);
+  padding: .45rem .6rem;
+  border-radius: var(--emi-radio);
+}
+.emi-navbar .navbar-toggler:focus { box-shadow: 0 0 0 .2rem rgba(224, 49, 58, .3); }
+.emi-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23efe7d8' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 991.98px) {
+  .emi-navbar .navbar-collapse {
+    margin-top: .8rem;
+    padding: .6rem 0 1rem;
+    border-top: 1px solid var(--emi-borde);
+  }
+  .emi-navbar .nav-link { padding: .8rem 0; }
+  .emi-navbar .nav-link::after { bottom: .45rem; }
+}
+
+/* 05. BOTONES Y ENLACES ==================================================== */
+.btn {
+  --bs-btn-border-radius: var(--emi-radio);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .78rem 1.45rem;
+  transition: transform var(--emi-transicion), background var(--emi-transicion),
+              border-color var(--emi-transicion), color var(--emi-transicion);
+}
+
+.btn-sangre {
+  --bs-btn-color: #fff6f3;
+  --bs-btn-bg: var(--emi-sangre);
+  --bs-btn-border-color: #c2262e;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #b8161f;
+  --bs-btn-hover-border-color: var(--emi-brasa);
+  --bs-btn-active-bg: var(--emi-sangre-oscura);
+  --bs-btn-active-border-color: var(--emi-brasa);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .1), transparent 45%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 12px 24px -18px var(--emi-brasa);
+  clip-path: polygon(9px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 9px);
+}
+.btn-sangre:hover { transform: translateY(-1px); }
+
+.btn-fantasma {
+  --bs-btn-color: var(--emi-hueso);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--emi-borde-claro);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: rgba(224, 49, 58, .1);
+  --bs-btn-hover-border-color: var(--emi-brasa);
+  --bs-btn-active-bg: rgba(224, 49, 58, .18);
+  --bs-btn-active-border-color: var(--emi-brasa);
+}
+.btn-fantasma:hover { transform: translateY(-1px); }
+
+.btn-enlace {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--emi-brasa-clara);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 122, 128, .35);
+  border-radius: 0;
+}
+.btn-enlace:hover,
+.btn-enlace:focus-visible { color: #ffd9db; border-bottom-color: #ffd9db; }
+
+/* 06. PORTADA ============================================================= */
+.emi-hero {
+  position: relative;
+  min-height: clamp(600px, 92svh, 880px);
+  display: flex;
+  align-items: center;
+  padding: clamp(7rem, 14vh, 10rem) 0 clamp(3.5rem, 8vh, 6rem);
+  background-image: url("../img/heroe.svg");
+  background-size: cover;
+  background-position: center 40%;
+  isolation: isolate;
+}
+
+.emi-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(7, 6, 6, .96) 0%, rgba(7, 6, 6, .86) 38%, rgba(7, 6, 6, .35) 70%, rgba(7, 6, 6, .55) 100%),
+    linear-gradient(0deg, var(--emi-tinta) 2%, transparent 45%);
+}
+
+.emi-hero__contenido { max-width: 42rem; }
+
+.emi-hero h1 {
+  font-size: clamp(2.6rem, 6.4vw, 4.9rem);
+  line-height: .98;
+  margin-bottom: 1.4rem;
+}
+
+.emi-hero h1 em {
+  font-style: normal;
+  color: var(--emi-brasa-clara);
+  text-shadow: 0 0 34px rgba(224, 49, 58, .45);
+}
+
+.emi-hero__entradilla {
+  font-size: clamp(1rem, 1.4vw, 1.16rem);
+  color: var(--emi-ceniza);
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.emi-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  margin-bottom: 1.1rem;
+  color: var(--emi-oro);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+
+.emi-eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: var(--emi-oro);
+  opacity: .8;
+}
+
+.emi-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 2.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.emi-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .36rem .7rem;
+  border: 1px solid var(--emi-borde);
+  background: rgba(20, 16, 14, .7);
+  color: var(--emi-ceniza);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+
+.emi-chip::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--emi-brasa);
+  box-shadow: 0 0 8px var(--emi-brasa);
+}
+
+/* 07. SECCIONES Y TÍTULOS ================================================= */
+.emi-cabecera-pagina {
+  padding: clamp(7rem, 13vh, 9.5rem) 0 clamp(2.25rem, 4vw, 3.25rem);
+  border-bottom: 1px solid var(--emi-borde);
+  background:
+    radial-gradient(900px 380px at 78% 0%, rgba(156, 18, 25, .18), transparent 70%),
+    linear-gradient(180deg, #0b0908, var(--emi-tinta));
+}
+
+.emi-breadcrumb {
+  --bs-breadcrumb-divider-color: var(--emi-ceniza-oscura);
+  --bs-breadcrumb-item-active-color: var(--emi-ceniza);
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.emi-breadcrumb a {
+  color: var(--emi-ceniza-oscura);
+  text-decoration: none;
+}
+.emi-breadcrumb a:hover,
+.emi-breadcrumb a:focus-visible { color: var(--emi-brasa-clara); }
+
+.emi-lista-habilidades {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .45rem;
+  font-size: .88rem;
+  color: var(--emi-ceniza);
+}
+.emi-lista-habilidades li {
+  position: relative;
+  padding-left: 1.15rem;
+}
+.emi-lista-habilidades li::before {
+  content: "";
+  position: absolute;
+  top: .62em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--emi-brasa);
+  transform: rotate(45deg);
+}
+
+.emi-seccion { padding-block: clamp(3.75rem, 7vw, 6.5rem); }
+.emi-seccion--alterna {
+  background:
+    linear-gradient(180deg, transparent, rgba(156, 18, 25, .05) 40%, transparent),
+    var(--emi-carbon);
+  border-block: 1px solid var(--emi-borde);
+}
+
+.emi-titulo {
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  margin-bottom: .9rem;
+}
+
+.emi-seccion__intro {
+  color: var(--emi-ceniza);
+  max-width: 58ch;
+}
+
+.emi-filete {
+  width: 72px;
+  height: 2px;
+  margin: 1.3rem 0 0;
+  background: linear-gradient(90deg, var(--emi-brasa), transparent);
+  border: 0;
+  opacity: 1;
+}
+
+.emi-dato {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--emi-borde);
+}
+.emi-dato__cifra {
+  font-family: var(--emi-display);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: var(--emi-oro);
+  line-height: 1;
+}
+.emi-dato__texto {
+  margin-top: .35rem;
+  margin-bottom: 0;
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--emi-ceniza-oscura);
+}
+
+/* 08. TARJETAS DE PERSONAJE ============================================== */
+.card-archivo {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(165deg, var(--emi-superficie), #0a0807);
+  border: 1px solid var(--emi-borde);
+  border-radius: var(--emi-radio);
+  overflow: hidden;
+  transition: transform var(--emi-transicion), border-color var(--emi-transicion), box-shadow var(--emi-transicion);
+}
+
+.card-archivo:hover,
+.card-archivo:focus-within {
+  transform: translateY(-5px);
+  border-color: rgba(224, 49, 58, .55);
+  box-shadow: var(--emi-sombra);
+}
+
+.card-archivo__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #0a0807;
+}
+
+.card-archivo__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  /* Unifica ilustraciones de distinta época bajo un mismo tratamiento. */
+  filter: grayscale(.6) sepia(.14) contrast(1.06) brightness(.92);
+  transition: filter 500ms ease, transform 700ms ease;
+}
+
+.card-archivo:hover .card-archivo__media img,
+.card-archivo:focus-within .card-archivo__media img {
+  filter: grayscale(.1) sepia(.06) contrast(1.05) brightness(1);
+  transform: scale(1.035);
+}
+
+.card-archivo__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 6, 6, 0) 45%, rgba(7, 6, 6, .92) 100%);
+  pointer-events: none;
+}
+
+.card-archivo__cuerpo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.1rem 1.15rem 1.25rem;
+  margin-top: -2.6rem;
+  z-index: 1;
+}
+
+.card-archivo__nombre {
+  font-size: 1.22rem;
+  margin-bottom: .15rem;
+}
+
+.card-archivo__epiteto {
+  font-size: .76rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--emi-oro);
+  margin-bottom: .65rem;
+}
+
+.card-archivo__resumen {
+  font-size: .87rem;
+  line-height: 1.55;
+  color: var(--emi-ceniza);
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-archivo__pie {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding-top: .85rem;
+  border-top: 1px solid rgba(46, 38, 34, .8);
+}
+
+.emi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .28rem .58rem;
+  font-size: .63rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: rgba(7, 6, 6, .6);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.emi-badge--halcon { color: #e4c471; }
+.emi-badge--guts { color: #ff8a8f; }
+.emi-badge--apostol { color: #d99a6c; }
+.emi-badge--mano { color: #9f9adf; }
+.emi-badge--solitario { color: #b9c6c9; }
+
+.emi-badge--posicion {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  z-index: 2;
+}
+
+.emi-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--emi-ceniza-oscura);
+}
+.emi-estado::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.emi-estado--vivo { color: #8fc79a; }
+.emi-estado--fallecido { color: #c97676; }
+.emi-estado--desconocido { color: #c9a24a; }
+
+/* 09. BARRA DE FILTROS Y PAGINACIÓN ====================================== */
+.emi-toolbar {
+  background: linear-gradient(180deg, var(--emi-superficie), #0b0908);
+  border: 1px solid var(--emi-borde);
+  border-radius: var(--emi-radio);
+  padding: 1rem;
+}
+
+.emi-buscador { position: relative; }
+.emi-buscador .form-control { padding-left: 2.6rem; }
+.emi-buscador__icono {
+  position: absolute;
+  top: 50%;
+  left: .9rem;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--emi-ceniza-oscura);
+  pointer-events: none;
+}
+
+.emi-contador {
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--emi-ceniza-oscura);
+}
+
+/* La tabla usa enlaces con aspecto de texto, sin versalitas. */
+.table-archivo .btn-enlace {
+  font-size: .92rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  border-bottom-color: transparent;
+  color: var(--emi-hueso);
+}
+.table-archivo .btn-enlace:hover,
+.table-archivo .btn-enlace:focus-visible {
+  color: var(--emi-brasa-clara);
+  border-bottom-color: currentColor;
+}
+
+.pagination {
+  --bs-pagination-bg: var(--emi-superficie);
+  --bs-pagination-border-color: var(--emi-borde);
+  --bs-pagination-color: var(--emi-ceniza);
+  --bs-pagination-hover-bg: var(--emi-hierro);
+  --bs-pagination-hover-color: var(--emi-hueso);
+  --bs-pagination-hover-border-color: var(--emi-borde-claro);
+  --bs-pagination-active-bg: var(--emi-sangre);
+  --bs-pagination-active-border-color: var(--emi-brasa);
+  --bs-pagination-disabled-bg: #0a0807;
+  --bs-pagination-disabled-border-color: var(--emi-borde);
+  --bs-pagination-disabled-color: var(--emi-ceniza-oscura);
+  --bs-pagination-focus-box-shadow: 0 0 0 .2rem rgba(224, 49, 58, .3);
+  --bs-pagination-focus-bg: var(--emi-hierro);
+  gap: .3rem;
+}
+.pagination .page-link { min-width: 40px; text-align: center; border-radius: var(--emi-radio); }
+
+.emi-vacio {
+  border: 1px dashed var(--emi-borde-claro);
+  border-radius: var(--emi-radio);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--emi-ceniza);
+}
+
+/* 10. TABLA COMPARATIVA ================================================== */
+.table-archivo {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--emi-hueso);
+  --bs-table-border-color: var(--emi-borde);
+  --bs-table-striped-bg: rgba(255, 255, 255, .02);
+  --bs-table-hover-bg: rgba(224, 49, 58, .07);
+  font-size: .88rem;
+  margin-bottom: 0;
+}
+.table-archivo thead th {
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--emi-oro);
+  font-weight: 700;
+  border-bottom-color: var(--emi-borde-claro);
+  white-space: nowrap;
+}
+.table-archivo caption {
+  caption-side: bottom;
+  padding-top: .85rem;
+  color: var(--emi-ceniza-oscura);
+  font-size: .78rem;
+}
+
+/* 11. ARCOS ARGUMENTALES ================================================= */
+.arco {
+  position: relative;
+  padding-block: clamp(2rem, 4vw, 3.25rem);
+  border-top: 1px solid var(--emi-borde);
+}
+
+.arco__numero {
+  font-family: var(--emi-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--emi-borde-claro);
+  user-select: none;
+}
+
+.arco__imagen {
+  position: relative;
+  border: 1px solid var(--emi-borde);
+  border-radius: var(--emi-radio);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--emi-superficie);
+}
+.arco__imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.7) contrast(1.05);
+  transition: transform 600ms ease;
+}
+.arco:hover .arco__imagen img { transform: scale(1.04); }
+
+.arco__titulo { font-size: clamp(1.45rem, 2.4vw, 1.95rem); margin-bottom: .6rem; }
+.arco__meta {
+  font-size: .74rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--emi-oro);
+  margin-bottom: .8rem;
+}
+
+.accordion-archivo {
+  --bs-accordion-bg: transparent;
+  --bs-accordion-color: var(--emi-ceniza);
+  --bs-accordion-border-color: var(--emi-borde);
+  --bs-accordion-btn-color: var(--emi-hueso);
+  --bs-accordion-btn-bg: transparent;
+  --bs-accordion-active-bg: rgba(224, 49, 58, .07);
+  --bs-accordion-active-color: var(--emi-hueso);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 .2rem rgba(224, 49, 58, .25);
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b5a89a'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23e0313a'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+.accordion-archivo .accordion-button {
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .9rem 1rem;
+}
+.accordion-archivo .accordion-body { font-size: .9rem; }
+
+/* 12. FORMULARIOS ======================================================== */
+.form-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--emi-ceniza);
+  margin-bottom: .4rem;
+}
+.form-label .emi-obligatorio { color: var(--emi-brasa-clara); }
+
+.form-control,
+.form-select {
+  background-color: #0b0908;
+  border: 1px solid var(--emi-borde-claro);
+  color: var(--emi-hueso);
+  border-radius: var(--emi-radio);
+  padding: .7rem .85rem;
+  font-size: .92rem;
+}
+.form-control::placeholder { color: #6c6158; opacity: 1; }
+.form-control:focus,
+.form-select:focus {
+  background-color: #0b0908;
+  color: var(--emi-hueso);
+  border-color: var(--emi-brasa);
+  box-shadow: 0 0 0 .2rem rgba(224, 49, 58, .22);
+}
+.form-control:disabled,
+.form-select:disabled { background-color: #0a0807; color: var(--emi-ceniza-oscura); }
+
+.form-select {
+  --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23b5a89a' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+.form-select option { background: var(--emi-superficie); color: var(--emi-hueso); }
+
+.form-text { color: var(--emi-ceniza-oscura); font-size: .78rem; }
+.form-check-input {
+  background-color: #0b0908;
+  border-color: var(--emi-borde-claro);
+}
+.form-check-input:checked {
+  background-color: var(--emi-sangre);
+  border-color: var(--emi-brasa);
+}
+.form-check-input:focus {
+  border-color: var(--emi-brasa);
+  box-shadow: 0 0 0 .2rem rgba(224, 49, 58, .22);
+}
+.form-check-label { font-size: .88rem; color: var(--emi-ceniza); }
+
+.was-validated .form-control:invalid,
+.was-validated .form-select:invalid,
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: #e06a6a;
+  background-image: none;
+}
+.was-validated .form-control:valid,
+.form-select.is-valid {
+  border-color: #6f9b78;
+  background-image: none;
+}
+.invalid-feedback { color: #ff9a9a; font-size: .78rem; }
+
+.emi-estrellas {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: .25rem;
+}
+.emi-estrellas input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.emi-estrellas label {
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #4a3f38;
+  cursor: pointer;
+  padding: .1rem .15rem;
+  transition: color var(--emi-transicion), transform var(--emi-transicion);
+}
+.emi-estrellas label:hover,
+.emi-estrellas label:hover ~ label,
+.emi-estrellas input:checked ~ label { color: var(--emi-oro); }
+.emi-estrellas input:focus-visible + label {
+  outline: 2px solid var(--emi-oro);
+  outline-offset: 2px;
+}
+
+#grupoValoracion.is-invalid .emi-estrellas {
+  outline: 1px solid #e06a6a;
+  outline-offset: 6px;
+  border-radius: var(--emi-radio);
+}
+#grupoValoracion.is-invalid #valoracionTexto { color: #ff9a9a; }
+
+.emi-contador-caracteres {
+  font-size: .76rem;
+  color: var(--emi-ceniza-oscura);
+  font-variant-numeric: tabular-nums;
+}
+.emi-contador-caracteres[data-limite="cerca"] { color: var(--emi-oro); }
+.emi-contador-caracteres[data-limite="excedido"] { color: #ff9a9a; }
+
+/* 13. MODALES ============================================================ */
+.modal-archivo .modal-content {
+  background: linear-gradient(170deg, #17120f, #0a0807 70%);
+  border: 1px solid var(--emi-borde-claro);
+  border-radius: var(--emi-radio);
+  color: var(--emi-hueso);
+  box-shadow: 0 40px 90px -40px #000;
+}
+.modal-archivo .modal-header {
+  border-bottom: 1px solid var(--emi-borde);
+  padding: 1.1rem 1.35rem;
+}
+.modal-archivo .modal-body { padding: 1.35rem; }
+.modal-archivo .modal-footer {
+  border-top: 1px solid var(--emi-borde);
+  padding: 1rem 1.35rem;
+}
+.modal-archivo .btn-close {
+  filter: invert(1) grayscale(1) brightness(1.8);
+  opacity: .7;
+}
+.modal-archivo .btn-close:hover { opacity: 1; }
+.modal-backdrop.show { opacity: .78; }
+
+.modal-archivo__retrato {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 1px solid var(--emi-borde);
+  border-radius: var(--emi-radio);
+  filter: grayscale(.35) sepia(.1) contrast(1.05);
+}
+
+.emi-lista-datos {
+  display: grid;
+  gap: .55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: .87rem;
+}
+.emi-lista-datos li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: .55rem;
+  border-bottom: 1px solid rgba(46, 38, 34, .7);
+}
+.emi-lista-datos dt,
+.emi-lista-datos span:first-child { color: var(--emi-ceniza-oscura); }
+.emi-lista-datos dd,
+.emi-lista-datos span:last-child { margin: 0; text-align: right; color: var(--emi-hueso); }
+
+.emi-etiquetas { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+/* 14. PIE DE PÁGINA ====================================================== */
+.emi-footer {
+  background: #060505;
+  border-top: 1px solid var(--emi-borde);
+  padding-block: 3.5rem 2rem;
+  font-size: .88rem;
+  color: var(--emi-ceniza);
+}
+.emi-footer h2 {
+  font-family: var(--emi-texto);
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--emi-oro);
+  margin-bottom: 1rem;
+}
+.emi-footer__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.emi-footer a {
+  color: var(--emi-ceniza);
+  text-decoration: none;
+  transition: color var(--emi-transicion);
+}
+.emi-footer a:hover,
+.emi-footer a:focus-visible { color: var(--emi-brasa-clara); }
+.emi-footer__legal {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--emi-borde);
+  font-size: .76rem;
+  line-height: 1.7;
+  color: var(--emi-ceniza-oscura);
+}
+
+/* 15. ANIMACIONES Y ACCESIBILIDAD ======================================== */
+:focus-visible {
+  outline: 2px solid var(--emi-oro);
+  outline-offset: 3px;
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js .reveal { opacity: 1; transform: none; }
+  .card-archivo:hover { transform: none; }
+}
+
+/* 16. AJUSTES RESPONSIVE ================================================= */
+@media (max-width: 575.98px) {
+  body { font-size: .97rem; }
+  .emi-hero { min-height: auto; padding-top: 6.5rem; }
+  .emi-hero::before {
+    background:
+      linear-gradient(180deg, rgba(7, 6, 6, .82), rgba(7, 6, 6, .9) 55%, var(--emi-tinta) 100%);
+  }
+  .emi-marca__sub { display: none; }
+  .emi-marca__sello { width: 34px; height: 34px; }
+  .btn { width: 100%; }
+  .emi-acciones .btn + .btn { margin-top: .6rem; }
+  .card-archivo__media { aspect-ratio: 3 / 4; }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .emi-hero h1 { font-size: clamp(3rem, 7vw, 4rem); }
+}
+
+@media (min-width: 1400px) {
+  .emi-hero__contenido { max-width: 46rem; }
+}
+
+/* Impresión: versión legible en papel. */
+@media print {
+  body { background: #fff !important; color: #111 !important; }
+  .emi-navbar, .emi-footer, .emi-hero, .emi-toolbar, .pagination, .btn { display: none !important; }
+  .card-archivo, .emi-seccion--alterna { border-color: #ccc; background: none; }
+  .js .reveal { opacity: 1 !important; transform: none !important; }
+  a { color: #111; text-decoration: underline; }
+}

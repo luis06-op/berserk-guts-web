@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="titulo">
+  <title id="titulo">Silueta de un espadachín con un enorme mandoble frente a una luna de sangre</title>
+  <defs>
+    <radialGradient id="cielo" cx="68%" cy="34%" r="76%">
+      <stop offset="0" stop-color="#5c1416"/>
+      <stop offset=".4" stop-color="#20100f"/>
+      <stop offset="1" stop-color="#070605"/>
+    </radialGradient>
+    <radialGradient id="luna" cx="42%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#e8b9a2"/>
+      <stop offset=".55" stop-color="#b4523f"/>
+      <stop offset="1" stop-color="#5f1d18"/>
+    </radialGradient>
+    <filter id="halo" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="grano" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".55"/></feComponentTransfer>
+    </filter>
+    <linearGradient id="niebla" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a1714" stop-opacity="0"/>
+      <stop offset="1" stop-color="#2a1714" stop-opacity=".7"/>
+    </linearGradient>
+    <radialGradient id="vineta" cx="50%" cy="46%" r="72%">
+      <stop offset=".45" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".85"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#cielo)"/>
+  <circle cx="1080" cy="290" r="228" fill="#8e2b22" opacity=".55" filter="url(#halo)"/>
+  <circle cx="1080" cy="290" r="196" fill="url(#luna)"/>
+  <g fill="#5c1b16" opacity=".45">
+    <circle cx="1010" cy="230" r="26"/><circle cx="1150" cy="330" r="34"/>
+    <circle cx="1120" cy="200" r="16"/><circle cx="980" cy="350" r="20"/>
+  </g>
+  <g stroke="#0b0908" stroke-width="4" opacity=".8" fill="none">
+    <path d="M0 620 L260 520 L520 610 L820 470 L1120 560 L1380 500 L1600 580"/>
+  </g>
+  <path d="M0 900 L0 660 C180 630 320 700 520 690 C760 678 900 736 1100 724 C1300 712 1460 758 1600 738 L1600 900 Z" fill="#080706"/>
+  <path d="M0 900 L0 760 C240 726 420 800 640 786 C900 770 1120 830 1600 792 L1600 900 Z" fill="#050404"/>
+  <rect y="560" width="1600" height="260" fill="url(#niebla)"/>
+  <g opacity=".5" fill="#0a0807">
+    <path d="M760 214 l14 -6 l10 8 l-16 4 z"/><path d="M840 178 l12 -10 l14 6 l-14 8 z"/>
+    <path d="M900 240 l10 -6 l12 8 l-14 2 z"/><path d="M700 268 l12 -4 l8 10 l-14 2 z"/>
+  </g>
+  <!-- Silueta del espadachín y su mandoble -->
+  <g>
+    <path d="M690 900 C696 792 724 724 780 686 L742 604 L716 470 L760 452 L806 560 L840 470 L884 452 L898 560 L872 660 C930 706 956 792 962 900 Z" fill="#070606"/>
+    <path d="M742 470 L806 560 L760 452 Z" fill="#161110"/>
+    <path d="M760 470 C740 520 736 580 744 640" stroke="#e0313a" stroke-width="3" opacity=".35" fill="none"/>
+    <path d="M934 690 L1180 92 L1212 104 L1004 706 Z" fill="#100d0c" stroke="#6d6259" stroke-width="2"/>
+    <path d="M934 690 L1180 92" stroke="#e0313a" stroke-width="2" opacity=".45"/>
+    <path d="M890 654 L1036 690 L1028 716 L884 680 Z" fill="#1a1513" stroke="#4b423b" stroke-width="2"/>
+    <path d="M742 604 L716 470 L760 452" fill="none" stroke="#4b423b" stroke-width="2"/>
+  </g>
+  <rect width="1600" height="900" filter="url(#grano)" opacity=".2"/>
+  <rect width="1600" height="900" fill="url(#vineta)"/>
+</svg>

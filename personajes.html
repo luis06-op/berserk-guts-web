@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personajes · Archivo del Espadachín Negro</title>
+  <meta name="description" content="Catálogo de personajes de Berserk con filtros por facción y estado, fichas ampliadas en modal y tabla comparativa. Interfaz responsiva con Bootstrap 5.">
+  <meta name="author" content="Luis · Actividad 3.4.2">
+  <meta name="theme-color" content="#070606">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <!-- Marca que JavaScript está activo: sin él, el contenido se muestra sin animaciones. -->
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="emi-skip" href="#contenido">Saltar al contenido principal</a>
+
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top emi-navbar" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand emi-marca" href="index.html" aria-label="Archivo del Espadachín Negro, ir al inicio">
+          <svg class="emi-marca__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M60 18 L60 62"/><path d="M60 62 L38 96"/><path d="M60 62 L82 96"/><path d="M60 40 L42 28"/>
+            </g>
+          </svg>
+          <span class="emi-marca__texto">
+            <span class="emi-marca__titulo">Berserk</span>
+            <span class="emi-marca__sub">Archivo del Espadachín Negro</span>
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir o cerrar el menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="personajes.html" aria-current="page">Personajes</a></li>
+            <li class="nav-item"><a class="nav-link" href="arcos.html">Arcos</a></li>
+            <li class="nav-item"><a class="nav-link" href="sugerencias.html">Sugerencias</a></li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-sangre btn-sm px-3" href="sugerencias.html">Aportar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- ===================================================================
+         CABECERA DE PÁGINA
+         =================================================================== -->
+    <section class="emi-cabecera-pagina">
+      <div class="container">
+        <nav aria-label="Ruta de navegación">
+          <ol class="breadcrumb emi-breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Personajes</li>
+          </ol>
+        </nav>
+
+        <div class="row align-items-end gy-3">
+          <div class="col-12 col-lg-8">
+            <p class="emi-eyebrow">El archivo · 16 fichas</p>
+            <h1 class="display-5 mb-3">Personajes</h1>
+            <p class="emi-seccion__intro mb-0">
+              De los mercenarios de la Edad Dorada a los generales apóstoles de Falconia.
+              Busca por nombre, filtra por facción y abre cada ficha para leer su historia,
+              sus habilidades y los arcos en los que aparece.
+            </p>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div class="d-flex flex-column flex-sm-row flex-lg-column gap-2 justify-content-lg-end text-lg-end">
+              <span class="emi-chip align-self-start align-self-lg-end">Bootstrap · grid 12 columnas</span>
+              <span class="emi-chip align-self-start align-self-lg-end">Fichas en modal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         FILTROS + CATÁLOGO
+         =================================================================== -->
+    <section class="pb-5" id="resultados" aria-labelledby="tituloCatalogo">
+      <div class="container">
+        <h2 class="visually-hidden" id="tituloCatalogo">Catálogo de personajes</h2>
+
+        <form class="emi-toolbar mb-4" role="search" onsubmit="return false;">
+          <div class="row g-3 align-items-end">
+            <div class="col-12 col-lg-4">
+              <label class="form-label" for="buscador">Buscar personaje</label>
+              <div class="emi-buscador">
+                <svg class="emi-buscador__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" aria-hidden="true" focusable="false">
+                  <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+                </svg>
+                <input type="search" class="form-control" id="buscador" name="buscador"
+                       placeholder="Nombre, apodo o rol…" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="col-6 col-lg-2">
+              <label class="form-label" for="filtroFaccion">Facción</label>
+              <select class="form-select" id="filtroFaccion" name="faccion">
+                <option value="">Todas</option>
+              </select>
+            </div>
+
+            <div class="col-6 col-lg-2">
+              <label class="form-label" for="filtroEstado">Estado</label>
+              <select class="form-select" id="filtroEstado" name="estado">
+                <option value="">Cualquiera</option>
+                <option value="vivo">Vivo</option>
+                <option value="fallecido">Fallecido</option>
+                <option value="desconocido">Desconocido</option>
+              </select>
+            </div>
+
+            <div class="col-6 col-lg-2">
+              <label class="form-label" for="filtroOrden">Ordenar por</label>
+              <select class="form-select" id="filtroOrden" name="orden">
+                <option value="nombre">Nombre (A–Z)</option>
+                <option value="nombre-desc">Nombre (Z–A)</option>
+                <option value="faccion">Facción</option>
+                <option value="estado">Estado</option>
+              </select>
+            </div>
+
+            <div class="col-6 col-lg-2 d-grid">
+              <button class="btn btn-fantasma" type="button" data-limpiar-filtros>Limpiar</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+          <p class="emi-contador mb-0" id="contadorResultados" role="status" aria-live="polite">
+            Cargando personajes…
+          </p>
+          <p class="emi-contador mb-0 d-none d-sm-block">Pulsa «Ver ficha» para ampliar</p>
+        </div>
+
+        <div class="row g-4" id="rejillaPersonajes">
+          <!-- Las tarjetas se generan con catalogo.js a partir de datos.js -->
+        </div>
+
+        <div class="emi-vacio mt-2" id="estadoVacio" hidden>
+          <p class="h5 mb-2">No hay nadie con esos criterios</p>
+          <p class="mb-3">Prueba con otro nombre o quita los filtros para ver el archivo completo.</p>
+          <button class="btn btn-fantasma" type="button" data-limpiar-filtros>Quitar filtros</button>
+        </div>
+
+        <nav class="mt-4 d-flex justify-content-center" aria-label="Paginación del catálogo">
+          <ul class="pagination mb-0" id="paginacion"></ul>
+        </nav>
+
+        <noscript>
+          <div class="alert alert-warning mt-4" role="alert">
+            Para filtrar y abrir las fichas necesitas activar JavaScript. La tabla comparativa
+            de abajo sigue siendo legible sin él.
+          </div>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         TABLA COMPARATIVA
+         =================================================================== -->
+    <section class="emi-seccion emi-seccion--alterna" aria-labelledby="tituloTabla">
+      <div class="container">
+        <div class="row gy-3 mb-4">
+          <div class="col-12 col-lg-8">
+            <p class="emi-eyebrow">Vista rápida</p>
+            <h2 class="emi-titulo" id="tituloTabla">Comparativa del archivo</h2>
+            <p class="emi-seccion__intro mb-0">
+              Misma información, otro formato: útil para comparar de un vistazo quién sigue
+              en pie y en cuántos arcos aparece.
+            </p>
+            <hr class="emi-filete">
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-archivo table-striped table-hover align-middle">
+            <caption>
+              Personajes ordenados alfabéticamente. La columna «Arcos» indica en cuántos
+              arcos documentados aparece cada uno.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Personaje</th>
+                <th scope="col">Facción</th>
+                <th scope="col">Papel</th>
+                <th scope="col">Estado</th>
+                <th scope="col" class="text-end">Arcos</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoTabla">
+              <!-- Se completa con catalogo.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       MODAL DE FICHA
+       ===================================================================== -->
+  <div class="modal fade modal-archivo" id="modalPersonaje" tabindex="-1"
+       aria-labelledby="modalPersonajeLabel" aria-describedby="personajeEpiteto">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header align-items-start">
+          <div>
+            <h2 class="modal-title h3 mb-1" id="modalPersonajeLabel">Ficha del personaje</h2>
+            <p class="emi-texto-oro emi-mini mb-0" id="personajeEpiteto"></p>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar la ficha"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-12 col-md-5">
+              <img class="modal-archivo__retrato" id="personajeRetrato" alt="" width="400" height="500">
+              <div class="d-flex flex-wrap gap-2 mt-3" id="personajeFacciones"></div>
+              <div class="mt-2" id="personajeEstado"></div>
+            </div>
+
+            <div class="col-12 col-md-7">
+              <div class="alert alert-danger border-danger-subtle bg-transparent py-2 px-3 small" id="personajeSpoiler" hidden>
+                <strong>Aviso:</strong> esta ficha revela giros importantes de la trama.
+              </div>
+
+              <div class="small" id="personajeDescripcion"></div>
+
+              <h3 class="emi-mini emi-texto-oro mt-4 mb-2">Habilidades</h3>
+              <ul class="emi-lista-habilidades" id="personajeHabilidades"></ul>
+
+              <h3 class="emi-mini emi-texto-oro mt-4 mb-2">Datos</h3>
+              <ul class="emi-lista-datos" id="personajeDatos"></ul>
+
+              <h3 class="emi-mini emi-texto-oro mt-4 mb-2">Arcos</h3>
+              <ul class="emi-etiquetas list-unstyled mb-0" id="personajeArcos"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer flex-wrap gap-2">
+          <a class="btn btn-fantasma btn-sm" href="arcos.html">Ver los arcos</a>
+          <a class="btn btn-sangre btn-sm" href="sugerencias.html">Sugerir una corrección</a>
+          <button type="button" class="btn btn-fantasma btn-sm ms-auto" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       PIE DE PÁGINA
+       ===================================================================== -->
+  <footer class="emi-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-lg-5">
+          <a class="emi-marca mb-3" href="index.html" aria-label="Archivo del Espadachín Negro, ir al inicio">
+            <svg class="emi-marca__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M60 18 L60 62"/><path d="M60 62 L38 96"/><path d="M60 62 L82 96"/><path d="M60 40 L42 28"/>
+              </g>
+            </svg>
+            <span class="emi-marca__texto">
+              <span class="emi-marca__titulo">Berserk</span>
+              <span class="emi-marca__sub">Archivo del Espadachín Negro</span>
+            </span>
+          </a>
+          <p class="small mb-0">
+            Proyecto académico de maquetación con Bootstrap. Sin ánimo de lucro y sin
+            afiliación con los titulares de la obra.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2>Archivo</h2>
+          <ul class="emi-footer__lista">
+            <li><a href="personajes.html">Personajes</a></li>
+            <li><a href="arcos.html">Arcos</a></li>
+            <li><a href="sugerencias.html">Sugerencias</a></li>
+            <li><a href="index.html#tecnica">Ficha técnica</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2>Recursos</h2>
+          <ul class="emi-footer__lista">
+            <li><a href="https://getbootstrap.com/docs/5.3/" target="_blank" rel="noopener noreferrer">Documentación de Bootstrap</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1</a></li>
+            <li><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">Validador HTML</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-3">
+          <h2>Estado del proyecto</h2>
+          <p class="small mb-2">Bootstrap 5.3.3 · HTML5 · CSS3 · JavaScript sin dependencias extra.</p>
+          <p class="small mb-0">
+            Contenido revisado en <time datetime="2026-10-26">octubre de 2026</time>.
+          </p>
+        </div>
+      </div>
+
+      <p class="emi-footer__legal mb-0">
+        <strong>Berserk</strong> es una obra de Kentaro Miura, continuada por Studio Gaga y
+        Kouji Mori. Los personajes y las ilustraciones pertenecen a sus autores y se emplean
+        aquí únicamente con fines educativos. Los emblemas, la escena de portada y el
+        logotipo son ilustraciones vectoriales propias. © <span data-anio>2026</span> ·
+        Actividad 3.4.2.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/datos.js"></script>
+  <script src="assets/js/comun.js"></script>
+  <script src="assets/js/catalogo.js"></script>
+</body>
+</html>

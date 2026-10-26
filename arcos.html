@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arcos argumentales · Archivo del Espadachín Negro</title>
+  <meta name="description" content="Cronología de los arcos de Berserk: Espadachín Negro, Edad Dorada, Eclipse, Condena, Halcón Milenario y Era de la Fantasía, con fichas ampliadas en modal.">
+  <meta name="author" content="Luis · Actividad 3.4.2">
+  <meta name="theme-color" content="#070606">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <!-- Marca que JavaScript está activo: sin él, el contenido se muestra sin animaciones. -->
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="emi-skip" href="#contenido">Saltar al contenido principal</a>
+
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top emi-navbar" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand emi-marca" href="index.html" aria-label="Archivo del Espadachín Negro, ir al inicio">
+          <svg class="emi-marca__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M60 18 L60 62"/><path d="M60 62 L38 96"/><path d="M60 62 L82 96"/><path d="M60 40 L42 28"/>
+            </g>
+          </svg>
+          <span class="emi-marca__texto">
+            <span class="emi-marca__titulo">Berserk</span>
+            <span class="emi-marca__sub">Archivo del Espadachín Negro</span>
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir o cerrar el menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="personajes.html">Personajes</a></li>
+            <li class="nav-item"><a class="nav-link" href="arcos.html" aria-current="page">Arcos</a></li>
+            <li class="nav-item"><a class="nav-link" href="sugerencias.html">Sugerencias</a></li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-sangre btn-sm px-3" href="sugerencias.html">Aportar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- ===================================================================
+         CABECERA DE PÁGINA
+         =================================================================== -->
+    <section class="emi-cabecera-pagina">
+      <div class="container">
+        <nav aria-label="Ruta de navegación">
+          <ol class="breadcrumb emi-breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Arcos</li>
+          </ol>
+        </nav>
+
+        <div class="row gy-4 align-items-end">
+          <div class="col-12 col-lg-8">
+            <p class="emi-eyebrow">La cronología · 6 estaciones</p>
+            <h1 class="display-5 mb-3">Arcos argumentales</h1>
+            <p class="emi-seccion__intro mb-0">
+              El relato avanza a saltos: primero la venganza, después el recuerdo de lo
+              perdido y, al final, un mundo que ya no se parece al que conocíamos. Los
+              resúmenes evitan los spoilers; las fichas ampliadas los avisan.
+            </p>
+          </div>
+          <div class="col-12 col-lg-4">
+            <p class="small emi-texto-tenue mb-0">
+              El Eclipse se presenta como entrada propia por su peso narrativo, aunque
+              cronológicamente cierre la Edad Dorada.
+            </p>
+          </div>
+        </div>
+
+        <!-- Índice rápido -->
+        <nav class="emi-indice-arcos mt-4 pt-4 border-top border-secondary-subtle" aria-label="Índice de arcos">
+          <ul class="list-unstyled d-flex flex-wrap gap-2 mb-0">
+            <li><a class="emi-chip text-decoration-none" href="#espadachin-negro">I · Espadachín Negro</a></li>
+            <li><a class="emi-chip text-decoration-none" href="#edad-dorada">II · Edad Dorada</a></li>
+            <li><a class="emi-chip text-decoration-none" href="#eclipse">III · Eclipse</a></li>
+            <li><a class="emi-chip text-decoration-none" href="#condena">IV · Condena</a></li>
+            <li><a class="emi-chip text-decoration-none" href="#halcon-milenario">V · Halcón Milenario</a></li>
+            <li><a class="emi-chip text-decoration-none" href="#fantasia">VI · Era de la Fantasía</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <div class="container pb-5">
+      <!-- =================================================================
+           I. ESPADACHÍN NEGRO
+           ================================================================= -->
+      <article class="arco" id="espadachin-negro" aria-labelledby="titulo-espadachin">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-5">
+            <div class="arco__imagen">
+              <img src="assets/img/arcos/espadachin-negro.svg" alt="Emblema con dos espadas cruzadas"
+                   width="800" height="450" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="col-12 col-lg-7">
+            <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
+              <span class="arco__numero" aria-hidden="true">I</span>
+              <p class="arco__meta mb-0">Manga · tomos 1 a 3</p>
+              <span class="emi-badge emi-badge--halcon">Sin spoilers</span>
+            </div>
+            <h2 class="arco__titulo" id="titulo-espadachin">El Espadachín Negro</h2>
+            <p class="emi-texto-tenue">
+              Un hombre armado con un mandoble imposible recorre aldeas y ciudades
+              persiguiendo apóstoles. Mata sin explicaciones y apenas habla. Cuando un elfo
+              se empeña en seguirle, el relato deja entrever que detrás de esa furia hay
+              algo más que venganza.
+            </p>
+            <p class="emi-texto-tenue mb-3">
+              Es la puerta de entrada a un mundo donde los monstruos llevan rostro humano y
+              los héroes no tienen nada de heroico.
+            </p>
+            <ul class="emi-etiquetas list-unstyled mb-4">
+              <li><a class="emi-badge emi-badge--guts text-decoration-none" href="personajes.html#guts">Guts</a></li>
+              <li><a class="emi-badge emi-badge--guts text-decoration-none" href="personajes.html#puck">Puck</a></li>
+            </ul>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-fantasma btn-sm" type="button" data-arco="espadachin-negro">Ficha del arco</button>
+              <a class="btn-enlace align-self-center" href="personajes.html">Ver personajes</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- =================================================================
+           II. EDAD DORADA
+           ================================================================= -->
+      <article class="arco" id="edad-dorada" aria-labelledby="titulo-edad">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-5 order-lg-2">
+            <div class="arco__imagen">
+              <img src="assets/img/arcos/edad-dorada.svg" alt="Emblema con la silueta de un halcón"
+                   width="800" height="450" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="col-12 col-lg-7">
+            <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
+              <span class="arco__numero" aria-hidden="true">II</span>
+              <p class="arco__meta mb-0">Manga · tomos 4 a 13</p>
+              <span class="emi-badge emi-badge--halcon">Sin spoilers</span>
+            </div>
+            <h2 class="arco__titulo" id="titulo-edad">La Edad Dorada</h2>
+            <p class="emi-texto-tenue">
+              La analepsis más larga de la obra cuenta cómo Guts conoció a Griffith y cómo
+              una banda de mercenarios hambrientos se convirtió en la espina dorsal del
+              ejército de Midland. Hay amistad, rivalidad y una guerra que parece ganable.
+            </p>
+            <p class="emi-texto-tenue mb-3">
+              Todo lo que ocurre aquí importa porque el lector ya sabe cómo termina. Esa es
+              precisamente la trampa: cuanto mejor es el sueño, más duele verlo caer.
+            </p>
+            <ul class="emi-etiquetas list-unstyled mb-4">
+              <li><a class="emi-badge emi-badge--halcon text-decoration-none" href="personajes.html#griffith">Griffith</a></li>
+              <li><a class="emi-badge emi-badge--halcon text-decoration-none" href="personajes.html#casca">Casca</a></li>
+              <li><a class="emi-badge emi-badge--halcon text-decoration-none" href="personajes.html#judeau">Judeau</a></li>
+              <li><a class="emi-badge emi-badge--halcon text-decoration-none" href="personajes.html#pippin">Pippin</a></li>
+              <li><a class="emi-badge emi-badge--halcon text-decoration-none" href="personajes.html#corkus">Corkus</a></li>
+              <li><a class="emi-badge emi-badge--halcon text-decoration-none" href="personajes.html#rickert">Rickert</a></li>
+            </ul>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-fantasma btn-sm" type="button" data-arco="edad-dorada">Ficha del arco</button>
+              <a class="btn-enlace align-self-center" href="personajes.html?faccion=halcon">Ver la banda</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- =================================================================
+           III. ECLIPSE
+           ================================================================= -->
+      <article class="arco arco--spoiler" id="eclipse" aria-labelledby="titulo-eclipse">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-5">
+            <div class="arco__imagen">
+              <img src="assets/img/arcos/eclipse.svg" alt="Emblema de un eclipse con corona de rayos"
+                   width="800" height="450" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="col-12 col-lg-7">
+            <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
+              <span class="arco__numero" aria-hidden="true">III</span>
+              <p class="arco__meta mb-0">Manga · tomo 13</p>
+              <span class="emi-badge emi-badge--guts">Spoilers mayores</span>
+            </div>
+            <h2 class="arco__titulo" id="titulo-eclipse">El Eclipse</h2>
+            <p class="emi-texto-tenue">
+              El ritual que parte la historia en dos. Griffith, con el cuerpo destrozado y
+              el sueño a punto de escaparse, acepta el precio que le ofrece la Mano de Dios:
+              sus compañeros como ofrenda. Lo que sigue es una de las secuencias más duras
+              del manga.
+            </p>
+            <p class="emi-texto-tenue mb-3">
+              Guts y Casca sobreviven, pero salen marcados. La marca no es una cicatriz: es
+              una invitación permanente para todo lo que habita al otro lado.
+            </p>
+            <ul class="emi-etiquetas list-unstyled mb-4">
+              <li><a class="emi-badge emi-badge--guts text-decoration-none" href="personajes.html#guts">Guts</a></li>
+              <li><a class="emi-badge emi-badge--halcon text-decoration-none" href="personajes.html#casca">Casca</a></li>
+              <li><a class="emi-badge emi-badge--solitario text-decoration-none" href="personajes.html#skullknight">Caballero Calavera</a></li>
+              <li><a class="emi-badge emi-badge--mano text-decoration-none" href="personajes.html#void">Void</a></li>
+            </ul>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-fantasma btn-sm" type="button" data-arco="eclipse">Ficha del arco</button>
+              <a class="btn-enlace align-self-center" href="personajes.html#casca">Ver ficha de Casca</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- =================================================================
+           IV. CONDENA
+           ================================================================= -->
+      <article class="arco" id="condena" aria-labelledby="titulo-condena">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-5 order-lg-2">
+            <div class="arco__imagen">
+              <img src="assets/img/arcos/condena.svg" alt="Emblema con una llama inquisitorial"
+                   width="800" height="450" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="col-12 col-lg-7">
+            <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
+              <span class="arco__numero" aria-hidden="true">IV</span>
+              <p class="arco__meta mb-0">Manga · tomos 14 a 21</p>
+              <span class="emi-badge emi-badge--halcon">Sin spoilers</span>
+            </div>
+            <h2 class="arco__titulo" id="titulo-condena">La Condena</h2>
+            <p class="emi-texto-tenue">
+              Guts vuelve con Casca, que ya no puede valerse por sí misma. Mientras tanto,
+              la Inquisición de Midland quema a cualquiera que se aparte de la doctrina y
+              una noble llamada Farnese dirige el espectáculo con entusiasmo.
+            </p>
+            <p class="emi-texto-tenue mb-3">
+              Aquí el grupo empieza a crecer: Schierke, Isidro, Serpico y Farnese dejarán de
+              ser extraños para convertirse en la única red que sostiene a Guts.
+            </p>
+            <ul class="emi-etiquetas list-unstyled mb-4">
+              <li><a class="emi-badge emi-badge--guts text-decoration-none" href="personajes.html#farnese">Farnese</a></li>
+              <li><a class="emi-badge emi-badge--guts text-decoration-none" href="personajes.html#serpico">Serpico</a></li>
+              <li><a class="emi-badge emi-badge--guts text-decoration-none" href="personajes.html#schierke">Schierke</a></li>
+              <li><a class="emi-badge emi-badge--guts text-decoration-none" href="personajes.html#isidro">Isidro</a></li>
+            </ul>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-fantasma btn-sm" type="button" data-arco="condena">Ficha del arco</button>
+              <a class="btn-enlace align-self-center" href="personajes.html?faccion=guts">Ver la compañía</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- =================================================================
+           V. HALCÓN MILENARIO
+           ================================================================= -->
+      <article class="arco" id="halcon-milenario" aria-labelledby="titulo-halcon">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-5">
+            <div class="arco__imagen">
+              <img src="assets/img/arcos/halcon-milenario.svg" alt="Emblema con un árbol y una luna creciente"
+                   width="800" height="450" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="col-12 col-lg-7">
+            <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
+              <span class="arco__numero" aria-hidden="true">V</span>
+              <p class="arco__meta mb-0">Manga · tomos 22 a 35</p>
+              <span class="emi-badge emi-badge--halcon">Sin spoilers</span>
+            </div>
+            <h2 class="arco__titulo" id="titulo-halcon">El Halcón Milenario</h2>
+            <p class="emi-texto-tenue">
+              Griffith ha regresado y construye un ejército capaz de enfrentarse a los
+              monstruos que él mismo ayudó a liberar. Guts responde con la armadura
+              berserker: más fuerza, menos humanidad.
+            </p>
+            <p class="emi-texto-tenue mb-3">
+              El viaje hacia Elfhelm ordena el relato: cada combate es una factura y cada
+              victoria deja a Guts un poco más lejos de sí mismo.
+            </p>
+            <ul class="emi-etiquetas list-unstyled mb-4">
+              <li><a class="emi-badge emi-badge--apostol text-decoration-none" href="personajes.html#zodd">Zodd</a></li>
+              <li><a class="emi-badge emi-badge--apostol text-decoration-none" href="personajes.html#grunbeld">Grunbeld</a></li>
+              <li><a class="emi-badge emi-badge--guts text-decoration-none" href="personajes.html#schierke">Schierke</a></li>
+              <li><a class="emi-badge emi-badge--solitario text-decoration-none" href="personajes.html#skullknight">Caballero Calavera</a></li>
+            </ul>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-fantasma btn-sm" type="button" data-arco="halcon-milenario">Ficha del arco</button>
+              <a class="btn-enlace align-self-center" href="personajes.html">Ver el archivo</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- =================================================================
+           VI. ERA DE LA FANTASÍA
+           ================================================================= -->
+      <article class="arco arco--spoiler" id="fantasia" aria-labelledby="titulo-fantasia">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-5 order-lg-2">
+            <div class="arco__imagen">
+              <img src="assets/img/arcos/fantasia.svg" alt="Emblema de un acantilado bajo una luna"
+                   width="800" height="450" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="col-12 col-lg-7">
+            <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
+              <span class="arco__numero" aria-hidden="true">VI</span>
+              <p class="arco__meta mb-0">Manga · tomos 36 en adelante</p>
+              <span class="emi-badge emi-badge--guts">Spoilers</span>
+            </div>
+            <h2 class="arco__titulo" id="titulo-fantasia">La Era de la Fantasía</h2>
+            <p class="emi-texto-tenue">
+              Los planos se funden. Los dragones, las sirenas y los dioses menores dejan de
+              ser leyendas y pasan a ocupar el mismo mundo que los humanos. Falconia se
+              ofrece como refugio, pero todo refugio tiene un precio.
+            </p>
+            <p class="emi-texto-tenue mb-3">
+              Cada personaje decide qué está dispuesto a ceder. La historia queda abierta
+              tras la muerte de Kentaro Miura; su estudio y Kouji Mori continúan el relato
+              con las notas que dejó.
+            </p>
+            <ul class="emi-etiquetas list-unstyled mb-4">
+              <li><a class="emi-badge emi-badge--halcon text-decoration-none" href="personajes.html#griffith">Griffith</a></li>
+              <li><a class="emi-badge emi-badge--guts text-decoration-none" href="personajes.html#guts">Guts</a></li>
+              <li><a class="emi-badge emi-badge--halcon text-decoration-none" href="personajes.html#rickert">Rickert</a></li>
+              <li><a class="emi-badge emi-badge--apostol text-decoration-none" href="personajes.html#grunbeld">Grunbeld</a></li>
+            </ul>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-fantasma btn-sm" type="button" data-arco="fantasia">Ficha del arco</button>
+              <a class="btn-enlace align-self-center" href="sugerencias.html">Sugerir un dato</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Nota de cierre -->
+      <div class="row justify-content-center pt-5">
+        <div class="col-12 col-lg-8">
+          <div class="emi-vacio text-start">
+            <p class="emi-mini emi-texto-oro mb-2">Sobre esta cronología</p>
+            <p class="mb-0 small">
+              Los rangos de tomos son orientativos y agrupan el material por arcos narrativos,
+              no por ediciones concretas. La obra queda inconclusa: <em>Berserk</em> continúa
+              publicándose tras el fallecimiento de Kentaro Miura, con guion de Kouji Mori y
+              dibujo de Studio Gaga.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =====================================================================
+       MODAL DE ARCO
+       ===================================================================== -->
+  <div class="modal fade modal-archivo" id="modalArco" tabindex="-1" aria-labelledby="modalArcoLabel">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <p class="emi-texto-oro emi-mini mb-1" id="arcoNumero">Arco</p>
+            <h2 class="modal-title h3" id="modalArcoLabel">Ficha del arco</h2>
+            <p class="small emi-texto-tenue mb-0" id="arcoMeta"></p>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar la ficha del arco"></button>
+        </div>
+
+        <div class="modal-body">
+          <img class="w-100 rounded-1 border border-secondary-subtle mb-4" id="arcoImagen" alt=""
+               width="800" height="450" style="aspect-ratio: 16 / 9; object-fit: cover;">
+
+          <div class="alert alert-danger border-danger-subtle bg-transparent py-2 px-3 small" id="arcoSpoiler" hidden>
+            <strong>Aviso:</strong> este arco contiene revelaciones importantes de la trama.
+          </div>
+
+          <p class="mb-4" id="arcoDetalle"></p>
+
+          <h3 class="emi-mini emi-texto-oro mb-3">Personajes presentes</h3>
+          <ul class="emi-etiquetas list-unstyled mb-0" id="arcoPersonajes"></ul>
+        </div>
+
+        <div class="modal-footer">
+          <a class="btn btn-fantasma btn-sm" href="personajes.html">Abrir el catálogo</a>
+          <button type="button" class="btn btn-sangre btn-sm" data-bs-dismiss="modal">Volver a la cronología</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       PIE DE PÁGINA
+       ===================================================================== -->
+  <footer class="emi-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-lg-5">
+          <a class="emi-marca mb-3" href="index.html" aria-label="Archivo del Espadachín Negro, ir al inicio">
+            <svg class="emi-marca__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M60 18 L60 62"/><path d="M60 62 L38 96"/><path d="M60 62 L82 96"/><path d="M60 40 L42 28"/>
+              </g>
+            </svg>
+            <span class="emi-marca__texto">
+              <span class="emi-marca__titulo">Berserk</span>
+              <span class="emi-marca__sub">Archivo del Espadachín Negro</span>
+            </span>
+          </a>
+          <p class="small mb-0">
+            Proyecto académico de maquetación con Bootstrap. Sin ánimo de lucro y sin
+            afiliación con los titulares de la obra.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2>Archivo</h2>
+          <ul class="emi-footer__lista">
+            <li><a href="personajes.html">Personajes</a></li>
+            <li><a href="arcos.html">Arcos</a></li>
+            <li><a href="sugerencias.html">Sugerencias</a></li>
+            <li><a href="index.html#tecnica">Ficha técnica</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2>Recursos</h2>
+          <ul class="emi-footer__lista">
+            <li><a href="https://getbootstrap.com/docs/5.3/" target="_blank" rel="noopener noreferrer">Documentación de Bootstrap</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1</a></li>
+            <li><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">Validador HTML</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-3">
+          <h2>Estado del proyecto</h2>
+          <p class="small mb-2">Bootstrap 5.3.3 · HTML5 · CSS3 · JavaScript sin dependencias extra.</p>
+          <p class="small mb-0">
+            Contenido revisado en <time datetime="2026-10-26">octubre de 2026</time>.
+          </p>
+        </div>
+      </div>
+
+      <p class="emi-footer__legal mb-0">
+        <strong>Berserk</strong> es una obra de Kentaro Miura, continuada por Studio Gaga y
+        Kouji Mori. Los personajes y las ilustraciones pertenecen a sus autores y se emplean
+        aquí únicamente con fines educativos. Los emblemas, la escena de portada y el
+        logotipo son ilustraciones vectoriales propias. © <span data-anio>2026</span> ·
+        Actividad 3.4.2.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/datos.js"></script>
+  <script src="assets/js/comun.js"></script>
+  <script src="assets/js/arcos.js"></script>
+</body>
+</html>

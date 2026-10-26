@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="titulo">
+  <title id="titulo">Emblema del arco El Halcón Milenario</title>
+  <defs>
+    <radialGradient id="cielo" cx="50%" cy="42%" r="72%">
+      <stop offset="0" stop-color="#8e6fd0" stop-opacity=".26"/>
+      <stop offset=".55" stop-color="#14100f"/>
+      <stop offset="1" stop-color="#060505"/>
+    </radialGradient>
+    <filter id="halo" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <filter id="grano" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".5"/></feComponentTransfer>
+    </filter>
+    <radialGradient id="vineta" cx="50%" cy="46%" r="74%">
+      <stop offset=".5" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".8"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#cielo)"/>
+  <g aria-hidden="true"><path d="M198 -40 L232 -40 L442 510 L408 510 Z" fill="#8e6fd0" opacity="0.064"/><path d="M3 -40 L30 -40 L240 510 L213 510 Z" fill="#8e6fd0" opacity="0.054"/><path d="M-6 -40 L32 -40 L242 510 L204 510 Z" fill="#8e6fd0" opacity="0.031"/><path d="M210 -40 L225 -40 L435 510 L420 510 Z" fill="#8e6fd0" opacity="0.097"/><path d="M-44 -40 L-32 -40 L178 510 L166 510 Z" fill="#8e6fd0" opacity="0.039"/><path d="M77 -40 L98 -40 L308 510 L287 510 Z" fill="#8e6fd0" opacity="0.099"/><path d="M358 -40 L370 -40 L580 510 L568 510 Z" fill="#8e6fd0" opacity="0.073"/></g>
+  <circle cx="400" cy="210" r="132" fill="none" stroke="#8e6fd0" stroke-width="2" opacity=".35"/>
+  <circle cx="400" cy="210" r="96" fill="#8e6fd0" opacity=".12" filter="url(#halo)"/>
+  
+      <path d="M400 348 L400 268" stroke="#cbbfae" stroke-width="8"/>
+      <path d="M400 300 C352 282 328 244 326 200 C360 208 388 230 400 262 C412 230 440 208 474 200 C472 244 448 282 400 300 Z" fill="#8e6fd0" opacity=".7"/>
+      <circle cx="400" cy="238" r="18" fill="#8e6fd0" opacity=".95"/>
+      <path d="M330 348 C360 336 440 336 470 348" stroke="#8e6fd0" stroke-width="3" opacity=".55"/>
+    
+  <g aria-hidden="true"><circle cx="284" cy="37" r="6.4" fill="#8e6fd0" opacity="0.19"/><circle cx="389" cy="218" r="1.2" fill="#8e6fd0" opacity="0.28"/><circle cx="172" cy="418" r="3.2" fill="#8e6fd0" opacity="0.26"/><circle cx="364" cy="235" r="6.4" fill="#8e6fd0" opacity="0.08"/><circle cx="567" cy="208" r="3.2" fill="#8e6fd0" opacity="0.08"/><circle cx="81" cy="91" r="1.8" fill="#8e6fd0" opacity="0.19"/><circle cx="650" cy="150" r="3.2" fill="#8e6fd0" opacity="0.25"/><circle cx="435" cy="72" r="1.2" fill="#8e6fd0" opacity="0.28"/><circle cx="397" cy="56" r="4.6" fill="#8e6fd0" opacity="0.17"/><circle cx="384" cy="288" r="1.8" fill="#8e6fd0" opacity="0.11"/><circle cx="542" cy="352" r="4.6" fill="#8e6fd0" opacity="0.23"/><circle cx="296" cy="57" r="2.4" fill="#8e6fd0" opacity="0.12"/><circle cx="724" cy="226" r="4.6" fill="#8e6fd0" opacity="0.22"/><circle cx="446" cy="316" r="1.2" fill="#8e6fd0" opacity="0.12"/><circle cx="219" cy="345" r="6.4" fill="#8e6fd0" opacity="0.2"/><circle cx="477" cy="78" r="1.8" fill="#8e6fd0" opacity="0.24"/><circle cx="790" cy="102" r="1.2" fill="#8e6fd0" opacity="0.11"/><circle cx="623" cy="121" r="2.4" fill="#8e6fd0" opacity="0.12"/><circle cx="593" cy="229" r="1.2" fill="#8e6fd0" opacity="0.2"/><circle cx="772" cy="374" r="1.8" fill="#8e6fd0" opacity="0.11"/><circle cx="246" cy="429" r="4.6" fill="#8e6fd0" opacity="0.18"/><circle cx="167" cy="425" r="1.8" fill="#8e6fd0" opacity="0.2"/><circle cx="699" cy="395" r="3.2" fill="#8e6fd0" opacity="0.2"/><circle cx="697" cy="113" r="1.2" fill="#8e6fd0" opacity="0.23"/><circle cx="159" cy="31" r="6.4" fill="#8e6fd0" opacity="0.22"/><circle cx="14" cy="200" r="2.4" fill="#8e6fd0" opacity="0.1"/></g>
+  <rect width="800" height="450" filter="url(#grano)" opacity=".18"/>
+  <rect width="800" height="450" fill="url(#vineta)"/>
+  <rect x="16" y="16" width="768" height="418" fill="none" stroke="#8e6fd0" stroke-width="1" opacity=".25"/>
+</svg>

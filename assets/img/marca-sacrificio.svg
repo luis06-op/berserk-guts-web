@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="titulo">
+  <title id="titulo">Marca de sacrificio</title>
+  <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M60 18 L60 62"/>
+    <path d="M60 62 L38 96"/>
+    <path d="M60 62 L82 96"/>
+    <path d="M60 40 L42 28"/>
+  </g>
+</svg>
