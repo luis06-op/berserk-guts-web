@@ -1,9 +1,9 @@
 # Archivo del Espadachín Negro
 
 Wiki temática de **Berserk** maquetada con **Bootstrap 5.3.3** para la actividad
-**3.4.2** (interfaz web responsiva). Incluye navegación, catálogo con filtros y
-paginación, fichas en modal, cronología de arcos, formulario validado y tabla
-comparativa.
+**3.4.2** (interfaz web responsiva). Incluye navegación, catálogo de **30 fichas**
+con filtros y paginación, fichas en modal, panel con pestañas, barras, listas y
+carrusel, cronología de arcos, formulario validado y tabla comparativa.
 
 ## Cómo abrir el proyecto
 
@@ -28,6 +28,7 @@ Google Fonts y, si no hay red, el navegador usa las familias de reserva.
 .
 ├── index.html                 Portada, cifras y bloques destacados
 ├── personajes.html            Catálogo (búsqueda, filtros, paginación, modal, tabla)
+│                              + panel de componentes Bootstrap y fuentes externas
 ├── arcos.html                 Cronología y fichas de arcos en modal
 ├── sugerencias.html           Formulario validado + preguntas frecuentes
 ├── assets/
@@ -43,7 +44,10 @@ Google Fonts y, si no hay red, el navegador usa las familias de reserva.
 ```
 
 Para añadir o corregir un personaje solo hay que editar `assets/js/datos.js`:
-las tarjetas, la tabla, los filtros y los modales se actualizan solos.
+las tarjetas, la tabla, los filtros, los modales y las cifras del panel se
+actualizan solos. Cada ficha lleva un campo `wiki` con el enlace externo a su
+artículo de [Berserk Wiki](https://berserk.fandom.com/wiki/Berserk_Wiki), que se
+abre en una pestaña nueva con `rel="noopener noreferrer"`.
 
 ## Requisitos de la actividad cubiertos
 
@@ -53,9 +57,10 @@ las tarjetas, la tabla, los filtros y los modales se actualizan solos.
 | Navegación | Barra fija colapsable, migas de pan, índice de arcos y pie con enlaces |
 | Formularios de captura | `sugerencias.html`: 8 campos, validación, contador y modal de resumen |
 | Tarjetas de contenido | `index.html` y `personajes.html`, con imagen, insignia y estado |
+| Pestañas, barras, listas y carrusel | `personajes.html#radiografia`, generados desde `datos.js` |
 | Modales | Ficha de personaje, ficha de arco y confirmación de envío |
 | Otros componentes | Acordeón, alertas, insignias, paginación, tabla responsive, *breadcrumb* |
-| HTML5 / CSS3 limpios y comentados | Estructura semántica, CSS organizado en 16 bloques, JS modular en IIFE |
+| HTML5 / CSS3 limpios y comentados | Estructura semántica, CSS organizado en 17 bloques, JS modular en IIFE |
 | Accesibilidad y usabilidad | Enlace de salto, etiquetas, `aria-live`, foco visible, contraste, `prefers-reduced-motion` |
 
 ## Accesibilidad

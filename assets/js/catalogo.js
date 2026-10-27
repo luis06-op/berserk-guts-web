@@ -20,6 +20,9 @@
 
   var el = {};
   var modal = null;
+  var nodoModal = null;
+  var aviso = null;
+  var nodoAviso = null;
 
   /* Utilidades ------------------------------------------------------------ */
 
@@ -82,6 +85,16 @@
     return lista.sort(comparadores[estado.orden] || comparadores.nombre);
   }
 
+  function buscarPersonaje(id) {
+    return DATOS.personajes.find(function (item) { return item.id === id; });
+  }
+
+  function enlaceExterno(url, texto, etiqueta) {
+    return '<a class="btn-enlace btn-enlace--externo" href="' + escapar(url) + '"' +
+           ' target="_blank" rel="noopener noreferrer" aria-label="' + escapar(etiqueta) + '">' +
+           escapar(texto) + ' <span aria-hidden="true">↗</span></a>';
+  }
+
   /* Pintado de tarjetas --------------------------------------------------- */
 
   function tarjeta(personaje) {
@@ -104,8 +117,12 @@
       '      <p class="card-archivo__resumen">' + escapar(personaje.resumen) + '</p>',
       '      <div class="card-archivo__pie">',
       '        <span class="emi-estado emi-estado--' + situacion.clase + '">' + situacion.texto + '</span>',
-      '        <button type="button" class="btn-enlace" data-personaje="' + escapar(personaje.id) + '"' +
-      '                aria-label="Ver la ficha de ' + escapar(personaje.nombre) + '">Ver ficha</button>',
+      '        <span class="card-archivo__acciones">',
+      '          <button type="button" class="btn-enlace" data-personaje="' + escapar(personaje.id) + '"' +
+      '                  aria-label="Ver la ficha de ' + escapar(personaje.nombre) + '">Ver ficha</button>',
+      '          ' + enlaceExterno(personaje.wiki, "Wiki",
+                                    "Abrir la ficha de " + personaje.nombre + " en el wiki de Berserk (sitio externo)"),
+      '        </span>',
       '      </div>',
       '    </div>',
       '  </article>',
@@ -207,45 +224,178 @@
   /* Ficha ampliada en modal ---------------------------------------------- */
 
   function abrirFicha(id) {
-    var personaje = DATOS.personajes.find(function (item) { return item.id === id; });
-    if (!personaje || !modal) { return; }
+    var personaje = buscarPersonaje(id);
+    if (!personaje) { return; }
+
+    /* Sin modal disponible (Bootstrap no cargó) se redirige a la ficha externa. */
+    if (!nodoModal) {
+      window.open(personaje.wiki, "_blank", "noopener");
+      return;
+    }
 
     var situacion = DATOS.estados[personaje.estado] || DATOS.estados.desconocido;
 
-    modal.querySelector("#personajeRetrato").src = personaje.imagen;
-    modal.querySelector("#personajeRetrato").alt = personaje.alt;
-    modal.querySelector("#modalPersonajeLabel").textContent = personaje.nombre;
-    modal.querySelector("#personajeEpiteto").textContent = personaje.epiteto;
+    /* OJO: `modal` es la instancia de Bootstrap, que no sabe nada del DOM.
+       Las búsquedas internas se hacen siempre sobre el elemento `nodoModal`. */
+    nodoModal.querySelector("#personajeRetrato").src = personaje.imagen;
+    nodoModal.querySelector("#personajeRetrato").alt = personaje.alt;
+    nodoModal.querySelector("#modalPersonajeLabel").textContent = personaje.nombre;
+    nodoModal.querySelector("#personajeEpiteto").textContent = personaje.epiteto;
 
-    modal.querySelector("#personajeFacciones").innerHTML = personaje.faccion.map(function (f) {
+    nodoModal.querySelector("#personajeFacciones").innerHTML = personaje.faccion.map(function (f) {
       return '<span class="emi-badge emi-badge--' + claseFaccion(f) + '">' +
              escapar(nombreFaccion(f)) + "</span>";
     }).join(" ");
 
-    modal.querySelector("#personajeEstado").innerHTML =
+    nodoModal.querySelector("#personajeEstado").innerHTML =
       '<span class="emi-estado emi-estado--' + situacion.clase + '">' + situacion.texto + "</span>";
 
-    modal.querySelector("#personajeDescripcion").innerHTML = personaje.descripcion.map(function (parrafo) {
+    nodoModal.querySelector("#personajeDescripcion").innerHTML = personaje.descripcion.map(function (parrafo) {
       return "<p>" + escapar(parrafo) + "</p>";
     }).join("");
 
-    modal.querySelector("#personajeHabilidades").innerHTML = personaje.habilidades.map(function (h) {
+    nodoModal.querySelector("#personajeHabilidades").innerHTML = personaje.habilidades.map(function (h) {
       return "<li>" + escapar(h) + "</li>";
     }).join("");
 
-    modal.querySelector("#personajeArcos").innerHTML = personaje.arcos.map(function (arco) {
-      return '<li><span class="emi-badge emi-badge--solitario">' + escapar(nombreArco(arco)) + "</span></li>";
+    nodoModal.querySelector("#personajeArcos").innerHTML = personaje.arcos.map(function (arco) {
+      return '<li><a class="emi-badge emi-badge--solitario text-decoration-none"' +
+             ' href="arcos.html#' + escapar(arco) + '">' + escapar(nombreArco(arco)) + "</a></li>";
     }).join("");
 
-    modal.querySelector("#personajeDatos").innerHTML = [
+    nodoModal.querySelector("#personajeDatos").innerHTML = [
       "<li><span>Papel</span><span>" + escapar(personaje.rol) + "</span></li>",
       "<li><span>Primera aparición</span><span>" + escapar(personaje.primera) + "</span></li>",
       "<li><span>Arcos</span><span>" + personaje.arcos.length + "</span></li>"
     ].join("");
 
-    modal.querySelector("#personajeSpoiler").hidden = !personaje.spoiler;
+    nodoModal.querySelector("#personajeSpoiler").hidden = !personaje.spoiler;
+
+    var wiki = nodoModal.querySelector("#personajeWiki");
+    if (wiki) {
+      wiki.href = personaje.wiki;
+      wiki.setAttribute("aria-label", "Abrir la ficha de " + personaje.nombre +
+        " en el wiki de Berserk (sitio externo)");
+    }
 
     modal.show();
+  }
+
+  /* Panel del archivo: pestañas, barras, listas y carrusel de Bootstrap --- */
+
+  function porcentaje(parte, total) {
+    return total ? Math.round((parte / total) * 100) : 0;
+  }
+
+  function barra(etiqueta, total, clase) {
+    var valor = porcentaje(total, DATOS.personajes.length);
+    return [
+      '<div class="emi-panel__fila">',
+      '  <div class="d-flex justify-content-between align-items-center mb-1">',
+      '    <span class="small text-uppercase">' + escapar(etiqueta) + '</span>',
+      '    <span class="badge text-bg-secondary">' + total + ' · ' + valor + '%</span>',
+      '  </div>',
+      '  <div class="progress emi-panel__barra" role="progressbar" aria-label="' + escapar(etiqueta) + '"' +
+      '       aria-valuenow="' + valor + '" aria-valuemin="0" aria-valuemax="100">',
+      '    <div class="progress-bar bg-' + clase + '" style="width: ' + valor + '%"></div>',
+      '  </div>',
+      '</div>'
+    ].join("");
+  }
+
+  function pintarPanel() {
+    var total = DATOS.personajes.length;
+
+    var listaFacciones = document.getElementById("listaFacciones");
+    if (listaFacciones) {
+      listaFacciones.innerHTML = DATOS.facciones.map(function (f) {
+        var cuantos = DATOS.personajes.filter(function (p) {
+          return p.faccion.indexOf(f.id) !== -1;
+        }).length;
+        return [
+          '<li class="list-group-item d-flex justify-content-between align-items-center gap-3">',
+          '  <a class="emi-badge emi-badge--' + f.clase + ' text-decoration-none" href="#resultados"' +
+          '     data-filtrar-faccion="' + escapar(f.id) + '">' + escapar(f.nombre) + '</a>',
+          '  <span class="badge text-bg-danger rounded-pill">' + cuantos + '</span>',
+          '</li>'
+        ].join("");
+      }).join("");
+    }
+
+    var barrasEstado = document.getElementById("barrasEstado");
+    if (barrasEstado) {
+      var colores = { vivo: "success", fallecido: "danger", desconocido: "secondary" };
+      barrasEstado.innerHTML = Object.keys(DATOS.estados).map(function (clave) {
+        var cuantos = DATOS.personajes.filter(function (p) { return p.estado === clave; }).length;
+        return barra(DATOS.estados[clave].texto, cuantos, colores[clave] || "secondary");
+      }).join("");
+    }
+
+    var listaArcos = document.getElementById("listaArcos");
+    if (listaArcos) {
+      listaArcos.innerHTML = DATOS.arcos.map(function (arco) {
+        return [
+          '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3"' +
+          '   href="arcos.html#' + escapar(arco.id) + '">',
+          '  <span><span class="emi-mini emi-texto-oro me-2">' + escapar(arco.numero) + '</span>' +
+               escapar(arco.titulo) + '</span>',
+          '  <span class="badge text-bg-secondary rounded-pill">' + arco.personajes.length + '</span>',
+          '</a>'
+        ].join("");
+      }).join("");
+    }
+
+    var diapositivas = document.getElementById("carruselDiapositivas");
+    var indicadores = document.getElementById("carruselIndicadores");
+    if (diapositivas) {
+      var retratos = ["guts", "griffith", "casca", "slan", "zodd", "ganishka"]
+        .map(buscarPersonaje)
+        .filter(Boolean);
+
+      diapositivas.innerHTML = retratos.map(function (personaje, indice) {
+        return [
+          '<div class="carousel-item' + (indice === 0 ? " active" : "") + '">',
+          '  <img src="' + escapar(personaje.imagen) + '" class="d-block w-100" alt="' + escapar(personaje.alt) + '"',
+          '       loading="lazy" decoding="async">',
+          '  <div class="carousel-caption text-start">',
+          '    <p class="h5 mb-0">' + escapar(personaje.nombre) + '</p>',
+          '    <p class="small mb-2">' + escapar(personaje.epiteto) + '</p>',
+          '    <button class="btn btn-sm btn-outline-light" type="button" data-personaje="' +
+                 escapar(personaje.id) + '">Ver ficha</button>',
+          '    ' + enlaceExterno(personaje.wiki, "Wiki",
+                                    "Abrir la ficha de " + personaje.nombre + " en el wiki de Berserk (sitio externo)"),
+          '  </div>',
+          '</div>'
+        ].join("");
+      }).join("");
+
+      if (indicadores) {
+        indicadores.innerHTML = retratos.map(function (personaje, indice) {
+          return '<button type="button" data-bs-target="#carruselRetratos" data-bs-slide-to="' + indice + '"' +
+                 (indice === 0 ? ' class="active" aria-current="true"' : '') +
+                 ' aria-label="Retrato de ' + escapar(personaje.nombre) + '"></button>';
+        }).join("");
+      }
+    }
+
+    document.querySelectorAll("[data-total-fichas], #totalFichas").forEach(function (nodo) {
+      nodo.textContent = String(total);
+    });
+  }
+
+  /* Aviso flotante (toast de Bootstrap) al cambiar los filtros ------------- */
+
+  function avisar(texto) {
+    if (!aviso || !nodoAviso) { return; }
+    var cuerpo = nodoAviso.querySelector(".toast-body");
+    if (cuerpo) { cuerpo.textContent = texto; }
+    aviso.show();
+  }
+
+  function iniciarAviso() {
+    nodoAviso = document.getElementById("avisoFiltros");
+    if (!nodoAviso || !window.bootstrap) { return; }
+    aviso = bootstrap.Toast.getOrCreateInstance(nodoAviso, { delay: 2600 });
   }
 
   /* Eventos --------------------------------------------------------------- */
@@ -301,6 +451,7 @@
         estado.faccion = el.faccion.value;
         estado.pagina = 1;
         pintar();
+        avisar(estado.faccion ? "Facción: " + nombreFaccion(estado.faccion) : "Todas las facciones");
       });
     }
 
@@ -309,6 +460,9 @@
         estado.situacion = el.situacion.value;
         estado.pagina = 1;
         pintar();
+        avisar(estado.situacion
+          ? "Estado: " + (DATOS.estados[estado.situacion] || {}).texto
+          : "Cualquier estado");
       });
     }
 
@@ -316,6 +470,7 @@
       el.orden.addEventListener("change", function () {
         estado.orden = el.orden.value;
         pintar();
+        avisar("Orden: " + el.orden.options[el.orden.selectedIndex].textContent);
       });
     }
 
@@ -347,11 +502,11 @@
         }
       });
     }
-    var nodoModal = document.getElementById("modalPersonaje");
+    nodoModal = document.getElementById("modalPersonaje");
     if (nodoModal && window.bootstrap) {
-      modal = new bootstrap.Modal(nodoModal);
+      modal = bootstrap.Modal.getOrCreateInstance(nodoModal);
       nodoModal.addEventListener("hidden.bs.modal", function () {
-        modal.querySelector("#personajeRetrato").removeAttribute("src");
+        nodoModal.querySelector("#personajeRetrato").removeAttribute("src");
       });
     }
 
@@ -371,11 +526,28 @@
 
     pintar();
     pintarTabla();
+    pintarPanel();
+    iniciarAviso();
 
-    /* Enlace directo desde otras páginas: personajes.html#guts */
-    var destino = window.location.hash.replace("#", "");
+    /* Enlaces de facción del panel: filtran el catálogo al instante. */
+    document.querySelectorAll("[data-filtrar-faccion]").forEach(function (enlace) {
+      enlace.addEventListener("click", function (evento) {
+        evento.preventDefault();
+        estado.faccion = enlace.getAttribute("data-filtrar-faccion");
+        estado.pagina = 1;
+        if (el.faccion) { el.faccion.value = estado.faccion; }
+        pintar();
+        avisar("Filtrado por " + nombreFaccion(estado.faccion) + ": " + el.contador.textContent);
+        var ancla = document.getElementById("resultados");
+        if (ancla) { ancla.scrollIntoView({ block: "start" }); }
+      });
+    });
+
+    /* Enlace directo desde otras páginas: personajes.html#guts
+       o personajes.html?personaje=guts */
+    var destino = parametros.get("personaje") || window.location.hash.replace("#", "");
     if (destino) {
-      var personaje = DATOS.personajes.find(function (item) { return item.id === destino; });
+      var personaje = buscarPersonaje(destino);
       if (personaje) { abrirFicha(personaje.id); }
     }
   }

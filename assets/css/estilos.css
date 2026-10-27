@@ -1028,6 +1028,95 @@ strong { color: #fff8ec; }
   .emi-hero__contenido { max-width: 46rem; }
 }
 
+/* 17. PANEL BOOTSTRAP ===================================================== */
+/* Pestañas, listas, barras, carrusel y acordeón nativos. El comportamiento lo
+   aporta bootstrap.bundle.min.js; aquí solo se ajusta el tema visual. */
+
+.emi-badge--kushan { color: #7fb1c9; }
+
+.card-archivo__acciones {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .55rem;
+}
+.btn-enlace--externo { font-size: .7rem; opacity: .85; }
+.btn-enlace--externo:hover,
+.btn-enlace--externo:focus-visible { opacity: 1; }
+
+.emi-panel .nav-link { color: var(--emi-ceniza); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+.emi-panel .nav-link:hover { color: var(--emi-oro); }
+.emi-panel .nav-link.active { color: #fff; }
+
+.emi-panel__contenido {
+  background: rgba(255, 255, 255, .02);
+  padding: 1.15rem;
+}
+.emi-panel__barra { height: .5rem; }
+
+.emi-panel .list-group-item,
+.emi-panel__contenido .list-group-item,
+.emi-fuentes .list-group-item {
+  background: transparent;
+  border-color: rgba(46, 38, 34, .7);
+  color: var(--emi-hueso);
+  font-size: .87rem;
+}
+.emi-fuentes .list-group-item:hover,
+.emi-fuentes .list-group-item:focus-visible { background: rgba(224, 49, 58, .12); color: #fff; }
+
+.emi-carrusel {
+  --bs-carousel-caption-color: #fff;
+  border: 1px solid var(--emi-borde);
+  border-radius: var(--emi-radio);
+  overflow: hidden;
+}
+.emi-carrusel .carousel-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 22%;
+  filter: grayscale(.2) contrast(1.05);
+}
+.emi-carrusel .carousel-item .carousel-caption {
+  inset-inline: 0;
+  bottom: 0;
+  padding: 1rem 1.15rem 2.4rem;
+  text-align: left;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .9);
+  background: linear-gradient(0deg, rgba(5, 4, 4, .96) 55%, rgba(5, 4, 4, .55) 100%);
+}
+/* Bootstrap invierte el texto e indicadores del carrusel en tema oscuro
+   ([data-bs-theme=dark] .carousel .carousel-caption). Aquí mandan las imágenes
+   oscuras del archivo, así que se fuerzan los tonos claros. */
+[data-bs-theme="dark"] .emi-carrusel .carousel-indicators [data-bs-target] {
+  background-color: #fff;
+}
+.emi-carrusel .carousel-indicators { margin-bottom: .5rem; }
+.emi-carrusel .carousel-caption .btn-enlace--externo { color: #fff; }
+
+.emi-acordeon .accordion-item {
+  background: rgba(255, 255, 255, .02);
+  border-color: var(--emi-borde);
+}
+.emi-acordeon .accordion-button {
+  background: transparent;
+  color: var(--emi-hueso);
+  font-size: .92rem;
+}
+.emi-acordeon .accordion-button:not(.collapsed) {
+  background: rgba(224, 49, 58, .12);
+  color: #fff;
+  box-shadow: none;
+}
+.emi-acordeon .accordion-button:focus-visible {
+  border-color: var(--emi-oro);
+  box-shadow: 0 0 0 .2rem rgba(224, 176, 106, .25);
+}
+.emi-acordeon .accordion-button::after { filter: invert(1) sepia(.3) saturate(2); }
+.emi-acordeon .accordion-body { color: var(--emi-ceniza); font-size: .88rem; }
+
 /* Impresión: versión legible en papel. */
 @media print {
   body { background: #fff !important; color: #111 !important; }

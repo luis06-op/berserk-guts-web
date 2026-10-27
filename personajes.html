@@ -69,7 +69,7 @@
 
         <div class="row align-items-end gy-3">
           <div class="col-12 col-lg-8">
-            <p class="emi-eyebrow">El archivo · 16 fichas</p>
+            <p class="emi-eyebrow">El archivo · <span id="totalFichas">30</span> fichas</p>
             <h1 class="display-5 mb-3">Personajes</h1>
             <p class="emi-seccion__intro mb-0">
               De los mercenarios de la Edad Dorada a los generales apóstoles de Falconia.
@@ -81,6 +81,7 @@
             <div class="d-flex flex-column flex-sm-row flex-lg-column gap-2 justify-content-lg-end text-lg-end">
               <span class="emi-chip align-self-start align-self-lg-end">Bootstrap · grid 12 columnas</span>
               <span class="emi-chip align-self-start align-self-lg-end">Fichas en modal</span>
+              <span class="emi-chip align-self-start align-self-lg-end">Pestañas, barras y carrusel</span>
             </div>
           </div>
         </div>
@@ -172,6 +173,179 @@
     </section>
 
     <!-- ===================================================================
+         PANEL DEL ARCHIVO — componentes Bootstrap en vivo
+         =================================================================== -->
+    <section class="emi-seccion" id="radiografia" aria-labelledby="tituloRadiografia">
+      <div class="container">
+        <div class="row gy-3 mb-4">
+          <div class="col-12 col-lg-8">
+            <p class="emi-eyebrow">Panel del archivo</p>
+            <h2 class="emi-titulo" id="tituloRadiografia">Los datos, en componentes de Bootstrap</h2>
+            <p class="emi-seccion__intro mb-0">
+              Pestañas, barras de progreso, listas y un carrusel nativo: todo funciona con los
+              plugins de <code>bootstrap.bundle.min.js</code>, sin código propio de interfaz.
+              Las cifras se calculan a partir de <code>datos.js</code>, así que se actualizan solas.
+            </p>
+            <hr class="emi-filete">
+          </div>
+          <div class="col-12 col-lg-4 text-lg-end">
+            <span class="badge text-bg-danger fs-6" data-total-fichas>30</span>
+            <span class="badge text-bg-secondary fs-6">fichas documentadas</span>
+            <span class="badge text-bg-dark fs-6 border border-secondary-subtle">6 arcos</span>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-lg-7">
+            <ul class="nav nav-tabs" id="tabsArchivo" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tabFaccionesBoton" data-bs-toggle="tab"
+                        data-bs-target="#tabFacciones" type="button" role="tab"
+                        aria-controls="tabFacciones" aria-selected="true">Facciones</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tabEstadosBoton" data-bs-toggle="tab"
+                        data-bs-target="#tabEstados" type="button" role="tab"
+                        aria-controls="tabEstados" aria-selected="false">Estado</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tabArcosBoton" data-bs-toggle="tab"
+                        data-bs-target="#tabArcos" type="button" role="tab"
+                        aria-controls="tabArcos" aria-selected="false">Arcos</button>
+              </li>
+            </ul>
+
+            <div class="tab-content emi-panel__contenido" id="contenidoArchivo">
+              <div class="tab-pane fade show active" id="tabFacciones" role="tabpanel"
+                   aria-labelledby="tabFaccionesBoton" tabindex="0">
+                <p class="small emi-texto-tenue mb-2">
+                  Pulsa una facción para filtrar el catálogo al instante.
+                </p>
+                <ul class="list-group list-group-flush" id="listaFacciones"></ul>
+              </div>
+
+              <div class="tab-pane fade" id="tabEstados" role="tabpanel"
+                   aria-labelledby="tabEstadosBoton" tabindex="0">
+                <p class="small emi-texto-tenue mb-3">
+                  Proporción de fichas según su situación en la historia.
+                </p>
+                <div class="vstack gap-3" id="barrasEstado"></div>
+              </div>
+
+              <div class="tab-pane fade" id="tabArcos" role="tabpanel"
+                   aria-labelledby="tabArcosBoton" tabindex="0">
+                <p class="small emi-texto-tenue mb-2">
+                  Cada arco enlaza a su cronología y muestra cuántas fichas lo mencionan.
+                </p>
+                <div class="list-group" id="listaArcos"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-5">
+            <div id="carruselRetratos" class="carousel slide emi-carrusel" data-bs-ride="carousel">
+              <div class="carousel-indicators" id="carruselIndicadores"></div>
+              <div class="carousel-inner" id="carruselDiapositivas"></div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carruselRetratos"
+                      data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Retrato anterior</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carruselRetratos"
+                      data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente retrato</span>
+              </button>
+            </div>
+            <p class="emi-mini emi-texto-tenue mt-2 mb-0">
+              Retratos de la galería del archivo · carrusel nativo de Bootstrap
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+          <div class="col-12 col-lg-7">
+            <div class="accordion emi-acordeon" id="acordeonArchivo">
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="acordeonUnoCabecera">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#acordeonUno" aria-expanded="true" aria-controls="acordeonUno">
+                    ¿Con qué criterio se elige a quién entra en el archivo?
+                  </button>
+                </h3>
+                <div id="acordeonUno" class="accordion-collapse collapse show"
+                     aria-labelledby="acordeonUnoCabecera" data-bs-parent="#acordeonArchivo">
+                  <div class="accordion-body">
+                    Se incluye a quien mueve la trama o cambia el rumbo de otro personaje: protagonistas,
+                    antagonistas con peso propio y secundarios que aparecen en más de un arco. Cada ficha
+                    necesita al menos un arco documentado y una descripción verificable.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="acordeonDosCabecera">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#acordeonDos" aria-expanded="false" aria-controls="acordeonDos">
+                    ¿De dónde salen los retratos?
+                  </button>
+                </h3>
+                <div id="acordeonDos" class="accordion-collapse collapse"
+                     aria-labelledby="acordeonDosCabecera" data-bs-parent="#acordeonArchivo">
+                  <div class="accordion-body">
+                    De la galería pública de <strong>Berserk Wiki</strong> (Fandom), reescalados a 400 px de
+                    ancho. Cada ficha enlaza a su artículo original con el botón «Wiki», que abre en una
+                    pestaña nueva. Los emblemas de los arcos, la portada y el logotipo sí son ilustraciones
+                    vectoriales propias.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="acordeonTresCabecera">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#acordeonTres" aria-expanded="false" aria-controls="acordeonTres">
+                    ¿Por qué hay avisos de spoiler?
+                  </button>
+                </h3>
+                <div id="acordeonTres" class="accordion-collapse collapse"
+                     aria-labelledby="acordeonTresCabecera" data-bs-parent="#acordeonArchivo">
+                  <div class="accordion-body">
+                    Porque el archivo cuenta el Eclipse, la caída de Griffith y el destino de media Banda
+                    del Halcón sin rodeos. Las fichas marcadas muestran un aviso rojo antes de leer:
+                    el resto del catálogo se puede recorrer sin destripar los giros principales.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-5">
+            <h3 class="emi-mini emi-texto-oro text-uppercase mb-3">Fuentes externas</h3>
+            <div class="list-group emi-fuentes">
+              <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3"
+                 href="https://berserk.fandom.com/wiki/Berserk_Wiki" target="_blank" rel="noopener noreferrer">
+                <span>Berserk Wiki (Fandom)</span><span aria-hidden="true">↗</span>
+              </a>
+              <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3"
+                 href="https://es.wikipedia.org/wiki/Berserk_(manga)" target="_blank" rel="noopener noreferrer">
+                <span>Berserk en Wikipedia</span><span aria-hidden="true">↗</span>
+              </a>
+              <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3"
+                 href="https://www.darkhorse.com/Search/berserk" target="_blank" rel="noopener noreferrer">
+                <span>Edición en inglés (Dark Horse)</span><span aria-hidden="true">↗</span>
+              </a>
+              <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3"
+                 href="https://getbootstrap.com/docs/5.3/components/carousel/" target="_blank" rel="noopener noreferrer">
+                <span>Documentación de Bootstrap</span><span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
          TABLA COMPARATIVA
          =================================================================== -->
     <section class="emi-seccion emi-seccion--alterna" aria-labelledby="tituloTabla">
@@ -255,11 +429,25 @@
         </div>
 
         <div class="modal-footer flex-wrap gap-2">
+          <a class="btn btn-fantasma btn-sm" id="personajeWiki" href="https://berserk.fandom.com/wiki/Berserk_Wiki"
+             target="_blank" rel="noopener noreferrer">Wiki ↗</a>
           <a class="btn btn-fantasma btn-sm" href="arcos.html">Ver los arcos</a>
           <a class="btn btn-sangre btn-sm" href="sugerencias.html">Sugerir una corrección</a>
           <button type="button" class="btn btn-fantasma btn-sm ms-auto" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Aviso flotante de Bootstrap al cambiar los filtros -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast" id="avisoFiltros" role="status" aria-live="polite" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Catálogo</strong>
+        <small>ahora</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Cerrar el aviso"></button>
+      </div>
+      <div class="toast-body">Filtros aplicados.</div>
     </div>
   </div>
 
@@ -300,6 +488,8 @@
         <div class="col-6 col-lg-2">
           <h2>Recursos</h2>
           <ul class="emi-footer__lista">
+            <li><a href="https://berserk.fandom.com/wiki/Berserk_Wiki" target="_blank" rel="noopener noreferrer">Berserk Wiki (Fandom)</a></li>
+            <li><a href="https://es.wikipedia.org/wiki/Berserk_(manga)" target="_blank" rel="noopener noreferrer">Berserk en Wikipedia</a></li>
             <li><a href="https://getbootstrap.com/docs/5.3/" target="_blank" rel="noopener noreferrer">Documentación de Bootstrap</a></li>
             <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1</a></li>
             <li><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">Validador HTML</a></li>
