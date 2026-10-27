@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="48" viewBox="0 0 1200 48" role="img" aria-label="Separador decorativo">
+  <title>Separador</title>
+  <defs>
+    <linearGradient id="linea" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0">
+      <stop offset="0" stop-color="#e0b06a" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#e0b06a" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#e0b06a" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="brasa" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#e0313a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#e0313a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="600" cy="24" rx="120" ry="22" fill="url(#brasa)">
+    <animate attributeName="rx" values="90;140;90" dur="5s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <line x1="0" y1="24" x2="552" y2="24" stroke="url(#linea)" stroke-width="2"/>
+  <line x1="648" y1="24" x2="1200" y2="24" stroke="url(#linea)" stroke-width="2"/>
+
+  <circle cx="600" cy="24" r="21" fill="none" stroke="#e0b06a" stroke-opacity="0.5" stroke-width="1.5"/>
+
+  <g transform="translate(586 9)" fill="none" stroke="#e0b06a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 4 L14 15"/>
+    <path d="M14 15 L6 26"/>
+    <path d="M14 15 L22 26"/>
+    <path d="M14 9 L8 4"/>
+    <animate attributeName="stroke" values="#e0b06a;#e0313a;#e0b06a" dur="6s" repeatCount="indefinite"/>
+  </g>
+</svg>
