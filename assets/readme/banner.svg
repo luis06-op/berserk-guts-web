@@ -115,7 +115,7 @@
         <g opacity="0">
           <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.6s" fill="freeze"/>
           <rect x="966" y="256" width="152" height="32" rx="16" fill="#1c1010" stroke="#e0313a" stroke-opacity="0.55"/>
-          <text x="1042" y="277" fill="#ff9a9e" text-anchor="middle">28 PANELES</text>
+          <text x="1042" y="277" fill="#ff9a9e" text-anchor="middle">35 PANELES</text>
         </g>
       </g>
     </g>

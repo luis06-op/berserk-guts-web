@@ -252,6 +252,102 @@ window.PANELES = {
       fuente: "https://berserk.fandom.com/wiki/File:Manga_E73_Eclipse_Invoked.png"
     },
     {
+      id: "apostoles-reunion",
+      titulo: "Los apóstoles despiertan",
+      episodio: "73",
+      arco: "eclipse",
+      archivo: "assets/img/paneles/apostoles-reunion",
+      ancho: 1032,
+      alto: 728,
+      alt: "Una multitud de apóstoles desnudos y deformes avanza entre la niebla sobre un suelo inundado.",
+      descripcion: "Los apóstoles convocados por el Eclipse emergen de la niebla. Miura da a cada cuerpo un tramado distinto —piel, pliegues, costillas— y deja que el horizonte se pierda en gris: no hay un protagonista, solo la masa.",
+      fuente: "https://berserk.fandom.com/wiki/File:Manga_E73_Apostles.png"
+    },
+    {
+      id: "void-rostro",
+      titulo: "El rostro de Void",
+      episodio: "76",
+      arco: "eclipse",
+      archivo: "assets/img/paneles/void-rostro",
+      ancho: 700,
+      alto: 700,
+      alt: "Primer plano de Void: un cerebro expuesto y un rostro óseo recortados sobre un sol negro.",
+      descripcion: "Void en primer plano: el cerebro al descubierto, el rostro óseo y el sol negro como halo. Uno de los diseños más perturbadores de Miura, dibujado con una precisión casi anatómica.",
+      fuente: "https://berserk.fandom.com/wiki/File:Manga_E76_Void.png"
+    },
+    {
+      id: "castillo-vacio",
+      titulo: "El castillo en el vacío",
+      episodio: "77",
+      arco: "eclipse",
+      archivo: "assets/img/paneles/castillo-vacio",
+      ancho: 1081,
+      alto: 609,
+      alt: "Un castillo minúsculo flota en un cielo negro mientras Griffith lo contempla de espaldas.",
+      descripcion: "Griffith contempla un castillo suspendido en un cielo casi por completo negro. La escala la marcan dos manchas blancas —la figura y el edificio lejano— sobre el vacío: el sueño del Halcón reducido a un punto.",
+      fuente: "https://berserk.fandom.com/wiki/File:Manga_E77_Castle.png"
+    },
+    {
+      id: "companerismo",
+      titulo: "Dos capas, un camino",
+      episodio: "78",
+      arco: "eclipse",
+      archivo: "assets/img/paneles/companerismo",
+      ancho: 1100,
+      alto: 619,
+      alt: "Guts y Griffith caminando juntos, con las capas ocupando el tercio inferior de la imagen.",
+      descripcion: "Guts y Griffith caminando juntos, con las capas ocupando el tercio inferior. Una imagen casi vacía, de gran superficie blanca, que resume la Edad Dorada antes de la caída.",
+      fuente: "https://berserk.fandom.com/wiki/File:Manga_E78_Camaraderie.png"
+    },
+    {
+      id: "festin-apostoles",
+      titulo: "El festín de los apóstoles",
+      episodio: "79",
+      arco: "eclipse",
+      archivo: "assets/img/paneles/festin-apostoles",
+      ancho: 1037,
+      alto: 1024,
+      alt: "Masa de apóstoles con bocas abiertas y ojos múltiples que se amontonan hasta llenar el panel.",
+      descripcion: "El festín: apóstoles amontonados, bocas abiertas y ojos por todas partes. El panel no tiene centro ni horizonte; es una textura continua de dientes y carne que se lee casi como un grabado abstracto.",
+      fuente: "https://berserk.fandom.com/wiki/File:Manga_E79_Feast.png"
+    },
+    {
+      id: "judeau-muere",
+      titulo: "La muerte de Judeau",
+      episodio: "81",
+      arco: "eclipse",
+      archivo: "assets/img/paneles/judeau-muere",
+      ancho: 878,
+      alto: 1100,
+      alt: "Guts sostiene el cuerpo malherido de Judeau en brazos, sobre un fondo blanco vacío.",
+      descripcion: "Judeau muere en brazos de Guts. Todo el peso de la escena recae en el blanco del fondo y en las manos: sin tramado, sin paisaje y sin multitud. El silencio que queda después del Eclipse.",
+      fuente: "https://berserk.fandom.com/wiki/File:Manga_E81_Judeau_Dies.png"
+    },
+    {
+      id: "mano-dios-completa",
+      titulo: "Cinco columnas bajo el sol negro",
+      episodio: "86",
+      arco: "eclipse",
+      archivo: "assets/img/paneles/mano-dios-completa",
+      ancho: 723,
+      alto: 1100,
+      alt: "Los cinco miembros de la Mano de Dios, enormes y encapuchados, se alzan como columnas ante un sol negro mientras Guts los observa desde el suelo.",
+      descripcion: "Los cinco miembros de la Mano de Dios vistos desde el suelo, convertidos en columnas gigantes bajo el sol negro. Guts y Griffith quedan reducidos a dos siluetas mínimas: el encuadre mide el abismo entre lo humano y lo divino.",
+      fuente: "https://berserk.fandom.com/wiki/File:Manga_E86_God_Hand_Complete.png"
+    },
+    {
+      id: "femto-senor",
+      titulo: "Femto, señor del Eclipse",
+      episodio: "86",
+      arco: "eclipse",
+      archivo: "assets/img/paneles/femto-senor",
+      ancho: 969,
+      alto: 1100,
+      alt: "Femto, con el casco negro y las alas plegadas, rodeado de rostros demoníacos que lo adoran.",
+      descripcion: "Femto recién nacido como miembro de la Mano de Dios, con el casco negro y las alas plegadas, rodeado de rostros que lo adoran. El brillo del casco está resuelto con blanco puro sobre negro absoluto.",
+      fuente: "https://berserk.fandom.com/wiki/File:Manga_E86_Femto.png"
+    },
+    {
       id: "conrad",
       titulo: "Conrad se manifiesta",
       episodio: "306",
@@ -298,18 +394,6 @@ window.PANELES = {
       alt: "Colina de beherits con rostros humanos, cada uno con ojos y boca propios.",
       descripcion: "El Huevo del Mundo Perfecto: una colina de beherits con rostros humanos. Cada beherit tiene ojos, boca y expresión propia, y el conjunto produce vértigo.",
       fuente: "https://berserk.fandom.com/wiki/File:Manga_E162.png"
-    },
-    {
-      id: "companerismo",
-      titulo: "Dos capas, un camino",
-      episodio: "78",
-      arco: "eclipse",
-      archivo: "assets/img/paneles/companerismo",
-      ancho: 1100,
-      alto: 619,
-      alt: "Guts y Griffith caminando juntos, con las capas ocupando el tercio inferior de la imagen.",
-      descripcion: "Guts y Griffith caminando juntos, con las capas ocupando el tercio inferior. Una imagen casi vacía, de gran superficie blanca, que resume la Edad Dorada antes de la caída.",
-      fuente: "https://berserk.fandom.com/wiki/File:Manga_E78_Camaraderie.png"
     },
     {
       id: "griffith-victorioso",
