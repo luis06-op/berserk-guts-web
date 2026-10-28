@@ -72,7 +72,7 @@
     var imagen = document.createElement("img");
     imagen.src = panel.archivo + "-min.webp";
     imagen.srcset = panel.archivo + "-min.webp 520w, " + panel.archivo + ".webp 1100w";
-    imagen.sizes = "(min-width: 1200px) 23vw, (min-width: 768px) 31vw, (min-width: 480px) 46vw, 92vw";
+    imagen.sizes = "(min-width: 1400px) 16vw, (min-width: 1200px) 19vw, (min-width: 992px) 23vw, (min-width: 768px) 31vw, (min-width: 480px) 46vw, 92vw";
     imagen.width = panel.ancho;
     imagen.height = panel.alto;
     imagen.alt = panel.alt;
@@ -84,7 +84,11 @@
     lupa.setAttribute("aria-hidden", "true");
     lupa.textContent = "⤢";
 
-    media.append(imagen, lupa);
+    var episodio = document.createElement("span");
+    episodio.className = "emi-pastilla emi-pastilla--episodio";
+    episodio.textContent = etiquetaEpisodio(panel);
+
+    media.append(imagen, lupa, episodio);
 
     var cuerpo = document.createElement("div");
     cuerpo.className = "emi-lamina__cuerpo";
@@ -92,15 +96,11 @@
     var meta = document.createElement("p");
     meta.className = "emi-lamina__meta";
 
-    var episodio = document.createElement("span");
-    episodio.className = "emi-pastilla";
-    episodio.textContent = etiquetaEpisodio(panel);
-
     var arco = document.createElement("span");
     arco.className = "emi-pastilla emi-pastilla--arco";
     arco.textContent = nombreArco(panel.arco);
 
-    meta.append(episodio, arco);
+    meta.append(arco);
 
     var titulo = document.createElement("h3");
     titulo.className = "emi-lamina__titulo";

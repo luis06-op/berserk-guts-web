@@ -195,8 +195,8 @@ episodio, su arco y un comentario breve sobre cómo está resuelta.
 
 | Portada de la galería | Rejilla filtrada por arcos |
 | :--: | :--: |
-| <img src="assets/readme/preview-galeria.jpg" alt="Portada de la galería con una doble página de Femto y el Caballero Calavera" width="100%"/> | <img src="assets/readme/preview-rejilla.jpg" alt="Rejilla de paneles en cuatro columnas con filtros por arco" width="100%"/> |
-| **Lámina de apertura** con zoom lento y cinta de miniaturas | **Tarjetas iguales de 4 → 1 columnas** con filtros y contador en vivo |
+| <img src="assets/readme/preview-galeria.jpg" alt="Portada de la galería con una doble página de Femto y el Caballero Calavera" width="100%"/> | <img src="assets/readme/preview-rejilla.jpg" alt="Rejilla de paneles en cinco columnas con filtros por arco" width="100%"/> |
+| **Lámina de apertura** con zoom lento y cinta de miniaturas | **Tarjetas pequeñas de 6 → 1 columnas** con filtros y contador en vivo |
 
 <img src="assets/readme/preview-visor.jpg" alt="Panel abierto en el visor ampliado con su descripción y el enlace a la fuente" width="92%"/>
 
@@ -211,7 +211,7 @@ enlace al archivo original de la wiki.
 |---|---|
 | 🗃️ **Datos** | `assets/js/paneles.js` guarda los 28 paneles: id, título, episodio, arco, medidas, texto alternativo, comentario y fuente |
 | 🏷️ **Filtros** | Un botón por arco con su recuento; «Todos» vuelve a la colección completa y el estado vacío ofrece limpiar el filtro |
-| 🧱 **Rejilla uniforme** | `grid` de 4 a 1 columnas; todas las tarjetas miden lo mismo (marco 4:3 con margen interior) y el panel entra completo, sin recortes |
+| 🧱 **Rejilla uniforme** | `grid` de 6 a 1 columnas; tarjetas pequeñas e idénticas (marco 4:3 con margen interior) y el panel entra completo, sin recortes |
 | 🔍 **Visor** | Modal de Bootstrap con la imagen a tamaño completo, anterior y siguiente, contador `n / 28` y enlace al archivo de origen |
 | ⌨️ **Teclado** | `←` y `→` cambian de panel con el visor abierto; `Esc` lo cierra; el foco queda atrapado en el modal |
 | 🔗 **Enlace directo** | `galeria.html?panel=eclipse` abre esa lámina al cargar; al cerrar, la URL se limpia sola |

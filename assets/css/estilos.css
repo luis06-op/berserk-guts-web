@@ -1137,7 +1137,8 @@ strong { color: #fff8ec; }
 
 .emi-galeria-hero__lamina {
   position: relative;
-  margin: 0;
+  max-width: 520px;
+  margin: 0 auto;
   overflow: hidden;
   border: 1px solid var(--emi-borde-claro);
   background: #0a0807;
@@ -1276,8 +1277,8 @@ strong { color: #fff8ec; }
 /* Rejilla uniforme: todas las láminas miden lo mismo, con el mismo margen. */
 .emi-rejilla-paneles {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: .9rem;
 }
 
 .emi-lamina {
@@ -1397,6 +1398,19 @@ strong { color: #fff8ec; }
 .emi-pastilla--arco {
   border-color: rgba(201, 162, 74, .45);
   color: var(--emi-oro);
+}
+
+/* Episodio: cuadrito sobre la esquina de la lámina. */
+.emi-pastilla--episodio {
+  position: absolute;
+  top: .55rem;
+  left: .55rem;
+  z-index: 1;
+  border-color: rgba(239, 231, 216, .35);
+  background: rgba(7, 6, 6, .82);
+  color: var(--emi-hueso);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 
 .emi-lamina__titulo {
@@ -1521,6 +1535,8 @@ strong { color: #fff8ec; }
 .emi-visor img {
   display: block;
   width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
   max-height: 58vh;
   object-fit: contain;
   background: #000;
@@ -1546,8 +1562,16 @@ strong { color: #fff8ec; }
   font-variant-numeric: tabular-nums;
 }
 
-/* Adaptación de la galería. */
+/* Adaptación de la galería: muchas columnas, tarjetas pequeñas. */
+@media (max-width: 1399.98px) {
+  .emi-rejilla-paneles { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
 @media (max-width: 1199.98px) {
+  .emi-rejilla-paneles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 991.98px) {
   .emi-rejilla-paneles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
@@ -1555,9 +1579,16 @@ strong { color: #fff8ec; }
   .emi-rejilla-paneles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .emi-cinta__pista img { width: 88px; height: 88px; }
   .emi-galeria-hero__lamina { margin-top: .5rem; }
+  /* Pastillas y títulos compactos: todo cabe y las tarjetas no crecen. */
+  .emi-pastilla { padding: .18rem .4rem; font-size: .53rem; letter-spacing: .06em; }
+  .emi-lamina__titulo {
+    font-size: .92rem;
+    -webkit-line-clamp: 3;
+    min-height: 3.75em;
+  }
 }
 
-@media (max-width: 479.98px) {
+@media (max-width: 359.98px) {
   .emi-rejilla-paneles { grid-template-columns: 1fr; }
   .emi-toolbar-galeria { align-items: stretch; }
 }
