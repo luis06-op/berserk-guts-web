@@ -445,7 +445,7 @@ vercel --prod
 
 | Ajuste | Para qué |
 |---|---|
-| **Cabeceras de caché** | Un año para `assets/vendor/`, una semana para CSS, JS e imágenes |
+| **Cabeceras de caché** | Un año para `assets/vendor/` (versión fija); CSS, JS, imágenes y HTML se revalidan en cada visita |
 | **Cabeceras de seguridad** | `nosniff`, `SAMEORIGIN`, `Referrer-Policy` y `Permissions-Policy` |
 | **Redirecciones** | Atajos legibles que llevan a las páginas y fichas |
 
