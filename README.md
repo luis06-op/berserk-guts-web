@@ -179,7 +179,7 @@ en el carrusel, en el bloque de fuentes externas y en el pie de las cinco págin
 ### 🖼️ Galería de 28 paneles
 
 Una página aparte dedicada solo al dibujo: viñetas y dobles páginas de Kentaro Miura con filtros por
-arco, mampostería, visor ampliado y enlaces directos. Se detalla más abajo, en
+arco, rejilla de tarjetas iguales, visor ampliado y enlaces directos. Se detalla más abajo, en
 [Galería de paneles](#galeria).
 
 ---
@@ -196,7 +196,7 @@ episodio, su arco y un comentario breve sobre cómo está resuelta.
 | Portada de la galería | Rejilla filtrada por arcos |
 | :--: | :--: |
 | <img src="assets/readme/preview-galeria.jpg" alt="Portada de la galería con una doble página de Femto y el Caballero Calavera" width="100%"/> | <img src="assets/readme/preview-rejilla.jpg" alt="Rejilla de paneles en cuatro columnas con filtros por arco" width="100%"/> |
-| **Lámina de apertura** con zoom lento y cinta de miniaturas | **Mampostería de 4 → 1 columnas** con filtros y contador en vivo |
+| **Lámina de apertura** con zoom lento y cinta de miniaturas | **Tarjetas iguales de 4 → 1 columnas** con filtros y contador en vivo |
 
 <img src="assets/readme/preview-visor.jpg" alt="Panel abierto en el visor ampliado con su descripción y el enlace a la fuente" width="92%"/>
 
@@ -211,7 +211,7 @@ enlace al archivo original de la wiki.
 |---|---|
 | 🗃️ **Datos** | `assets/js/paneles.js` guarda los 28 paneles: id, título, episodio, arco, medidas, texto alternativo, comentario y fuente |
 | 🏷️ **Filtros** | Un botón por arco con su recuento; «Todos» vuelve a la colección completa y el estado vacío ofrece limpiar el filtro |
-| 🧱 **Mampostería** | `column-count` de 4 a 1 columnas según el ancho; cada lámina conserva su proporción real, sin recortes |
+| 🧱 **Rejilla uniforme** | `grid` de 4 a 1 columnas; todas las tarjetas miden lo mismo (marco 4:3 con margen interior) y el panel entra completo, sin recortes |
 | 🔍 **Visor** | Modal de Bootstrap con la imagen a tamaño completo, anterior y siguiente, contador `n / 28` y enlace al archivo de origen |
 | ⌨️ **Teclado** | `←` y `→` cambian de panel con el visor abierto; `Esc` lo cierra; el foco queda atrapado en el modal |
 | 🔗 **Enlace directo** | `galeria.html?panel=eclipse` abre esa lámina al cargar; al cerrar, la URL se limpia sola |
@@ -334,7 +334,7 @@ y el tema oscuro nativo con `data-bs-theme="dark"`.
 | Capa | Tecnología | Detalle |
 | :-- | :-- | :-- |
 | Estructura | **HTML5 semántico** | `main`, `section`, `article`, `nav`, `footer`, encabezados sin saltos |
-| Estilos | **CSS3** | 18 bloques comentados, variables `--emi-*`, `clamp()`, `aspect-ratio`, `column-count`, `prefers-reduced-motion` |
+| Estilos | **CSS3** | 18 bloques comentados, variables `--emi-*`, `clamp()`, `aspect-ratio`, `grid`, `prefers-reduced-motion` |
 | Interfaz | **Bootstrap 5.3.3** | CSS y bundle JS vendorizados en `assets/vendor/` |
 | Lógica | **JavaScript ES6** | Siete módulos IIFE, sin transpilación ni bundler |
 | Datos | **`datos.js` + `paneles.js`** | `window.BERSERK` con personajes, facciones, estados y arcos; `window.PANELES` con la galería |
@@ -367,7 +367,7 @@ y el tema oscuro nativo con `data-bs-theme="dark"`.
 │   │   ├── catalogo.js           Filtros, tarjetas, paginación, ficha y panel
 │   │   ├── arcos.js              Modal de arcos
 │   │   ├── paneles.js            Los 28 paneles de la galería (fuente única)
-│   │   ├── galeria.js            Filtros, mampostería, visor y enlace directo
+│   │   ├── galeria.js            Filtros, rejilla, visor y enlace directo
 │   │   └── formulario.js         Validación, contador y confirmación
 │   ├── img/
 │   │   ├── personajes/           30 retratos (400 px de ancho)

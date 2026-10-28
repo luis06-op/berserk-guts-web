@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GALERÍA DE PANELES — filtros, mampostería, visor y enlaces directos
+   GALERÍA DE PANELES — filtros, rejilla uniforme, visor y enlaces directos
    --------------------------------------------------------------------------
    Todo el contenido sale de assets/js/paneles.js. Este archivo solo se
    encarga de pintar la rejilla, mover el visor y respetar reduce-motion.
@@ -72,7 +72,7 @@
     var imagen = document.createElement("img");
     imagen.src = panel.archivo + "-min.webp";
     imagen.srcset = panel.archivo + "-min.webp 520w, " + panel.archivo + ".webp 1100w";
-    imagen.sizes = "(min-width: 1200px) 23vw, (min-width: 768px) 31vw, 46vw";
+    imagen.sizes = "(min-width: 1200px) 23vw, (min-width: 768px) 31vw, (min-width: 480px) 46vw, 92vw";
     imagen.width = panel.ancho;
     imagen.height = panel.alto;
     imagen.alt = panel.alt;
@@ -93,9 +93,11 @@
     meta.className = "emi-lamina__meta";
 
     var episodio = document.createElement("span");
+    episodio.className = "emi-pastilla";
     episodio.textContent = etiquetaEpisodio(panel);
 
     var arco = document.createElement("span");
+    arco.className = "emi-pastilla emi-pastilla--arco";
     arco.textContent = nombreArco(panel.arco);
 
     meta.append(episodio, arco);
@@ -218,10 +220,10 @@
   function pintarCinta() {
     if (!cinta) return;
 
+    /* Miniaturas cuadradas: la cinta queda regular pase lo que pase. */
     var piezas = datos.paneles.slice(0, 14).map(function (panel) {
-      var alto = Math.round((520 * panel.alto) / panel.ancho);
-      return '<img src="' + panel.archivo + '-min.webp" alt="" width="520" height="' +
-        alto + '" loading="lazy" decoding="async">';
+      return '<img src="' + panel.archivo + '-min.webp" alt="" width="160" height="160"' +
+        ' loading="lazy" decoding="async">';
     }).join("");
 
     /* Dos copias: la animación desplaza exactamente la mitad de la pista. */
