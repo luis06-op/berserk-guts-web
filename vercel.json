@@ -28,6 +28,8 @@
   "redirects": [
     { "source": "/inicio", "destination": "/", "permanent": true },
     { "source": "/fichas", "destination": "/personajes.html", "permanent": true },
+    { "source": "/galeria", "destination": "/galeria.html", "permanent": true },
+    { "source": "/paneles", "destination": "/galeria.html", "permanent": true },
     { "source": "/personaje/:id", "destination": "/personajes.html?personaje=:id", "permanent": false },
     { "source": "/personaje/:id/", "destination": "/personajes.html?personaje=:id", "permanent": false }
   ]

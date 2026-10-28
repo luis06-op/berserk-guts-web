@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galería de paneles · Archivo del Espadachín Negro</title>
+  <meta name="description" content="Galería de 28 paneles del manga de Berserk elegidos por su dibujo: tramado, composición y escenas clave de Kentaro Miura, con filtros por arco y visor ampliado.">
+  <meta name="author" content="Luis · Actividad 3.4.2">
+  <meta name="theme-color" content="#070606">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <!-- Marca que JavaScript está activo: sin él, el contenido se muestra sin animaciones. -->
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="emi-skip" href="#contenido">Saltar al contenido principal</a>
+
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top emi-navbar" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand emi-marca" href="index.html" aria-label="Archivo del Espadachín Negro, ir al inicio">
+          <svg class="emi-marca__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M60 18 L60 62"/><path d="M60 62 L38 96"/><path d="M60 62 L82 96"/><path d="M60 40 L42 28"/>
+            </g>
+          </svg>
+          <span class="emi-marca__texto">
+            <span class="emi-marca__titulo">Berserk</span>
+            <span class="emi-marca__sub">Archivo del Espadachín Negro</span>
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir o cerrar el menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="personajes.html">Personajes</a></li>
+            <li class="nav-item"><a class="nav-link" href="arcos.html">Arcos</a></li>
+            <li class="nav-item"><a class="nav-link" href="galeria.html" aria-current="page">Galería</a></li>
+            <li class="nav-item"><a class="nav-link" href="sugerencias.html">Sugerencias</a></li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-sangre btn-sm px-3" href="sugerencias.html">Aportar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- ===================================================================
+         PORTADA DE LA GALERÍA
+         =================================================================== -->
+    <section class="emi-galeria-hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-12 col-lg-6">
+            <nav aria-label="Ruta de navegación">
+              <ol class="breadcrumb emi-breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Galería</li>
+              </ol>
+            </nav>
+
+            <p class="emi-eyebrow">El trazo · <span id="totalPaneles">28</span> paneles</p>
+            <h1 class="display-4 mb-3">El arte de<br><em>Kentaro Miura</em></h1>
+            <p class="emi-seccion__intro mb-4">
+              Una selección de viñetas y dobles páginas elegidas por cómo están dibujadas:
+              el tramado cruzado, el negro que se vuelve materia y las composiciones que
+              sostienen una escena sin una sola palabra.
+            </p>
+
+            <ul class="emi-chips mb-4">
+              <li class="emi-chip">Tramado a mano</li>
+              <li class="emi-chip">Tinta y negro plano</li>
+              <li class="emi-chip">Dobles páginas</li>
+              <li class="emi-chip">Visor ampliado</li>
+            </ul>
+
+            <div class="d-flex flex-wrap gap-3">
+              <a class="btn btn-sangre" href="#galeria">Ver la galería</a>
+              <button class="btn btn-fantasma" type="button" id="botonAleatorio">Sorpréndeme</button>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <figure class="emi-galeria-hero__lamina reveal">
+              <img src="assets/img/paneles/skull-knight-femto.webp"
+                   alt="El Caballero Calavera se planta ante Femto en una doble página del episodio 303."
+                   width="1100" height="811" fetchpriority="high" decoding="async">
+              <figcaption class="emi-galeria-hero__pie">
+                <span>Episodio 303</span>
+                <span>El Halcón Milenario</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cinta decorativa: retratos en movimiento continuo (aria-hidden). -->
+    <div class="emi-cinta" aria-hidden="true">
+      <div class="emi-cinta__pista" id="cintaPaneles"></div>
+    </div>
+
+    <!-- ===================================================================
+         GALERÍA
+         =================================================================== -->
+    <section class="emi-seccion" id="galeria">
+      <div class="container">
+        <div class="row align-items-end gy-3 mb-4">
+          <div class="col-12 col-lg-8">
+            <p class="emi-eyebrow">La colección</p>
+            <h2 class="mb-3">Paneles</h2>
+            <p class="emi-seccion__intro mb-0">
+              Filtra por arco, abre cualquier lámina para verla a tamaño completo y muévete
+              entre paneles con las flechas del teclado. Cada ficha indica el episodio y
+              enlaza al archivo original.
+            </p>
+          </div>
+          <div class="col-12 col-lg-4 text-lg-end">
+            <p class="emi-contador mb-3" id="contadorPaneles" role="status" aria-live="polite">28 paneles</p>
+            <button class="btn btn-fantasma btn-sm" type="button" id="botonAleatorioDos">
+              <svg class="emi-icono" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg> Panel al azar
+            </button>
+          </div>
+        </div>
+
+        <div class="emi-toolbar-galeria mb-4">
+          <div class="emi-filtros" id="filtrosPaneles" role="group" aria-label="Filtrar paneles por arco"></div>
+        </div>
+
+        <div class="emi-rejilla-paneles" id="rejillaPaneles"></div>
+
+        <p class="emi-vacio" id="vacioPaneles" hidden>
+          No hay paneles de ese arco. <button class="btn-enlace" type="button" data-limpiar>Ver todos</button>
+        </p>
+
+        <noscript>
+          <p class="emi-aviso">Activa JavaScript para ver la galería. Las imágenes también están
+            en <code>assets/img/paneles/</code>.</p>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SOBRE EL TRAZO
+         =================================================================== -->
+    <section class="emi-seccion emi-seccion--borde" id="trazo">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-12 col-lg-4">
+            <p class="emi-eyebrow">Cómo está dibujado</p>
+            <h2 class="h3 mb-3">Tres cosas que se repiten</h2>
+            <p class="emi-seccion__intro mb-0">
+              No hace falta ser dibujante para ver por qué estos paneles funcionan.
+              Estas son las tres decisiones que más aparecen en la selección.
+            </p>
+          </div>
+
+          <div class="col-12 col-lg-8">
+            <div class="row g-3">
+              <div class="col-12 col-md-4">
+                <article class="emi-trazo reveal">
+                  <span class="emi-trazo__num">01</span>
+                  <h3>Tramado cruzado</h3>
+                  <p>Líneas paralelas en dos direcciones para dar volumen sin grises: sombra,
+                    piel, piedra y tela se distinguen por la densidad del trazo.</p>
+                </article>
+              </div>
+              <div class="col-12 col-md-4">
+                <article class="emi-trazo reveal">
+                  <span class="emi-trazo__num">02</span>
+                  <h3>El negro como materia</h3>
+                  <p>Capas, pelajes y cielos se resuelven en negro plano. El contraste con el
+                    blanco del papel hace que la figura salte antes que el fondo.</p>
+                </article>
+              </div>
+              <div class="col-12 col-md-4">
+                <article class="emi-trazo reveal">
+                  <span class="emi-trazo__num">03</span>
+                  <h3>Página, no viñeta</h3>
+                  <p>Muchas escenas se dibujan pensando en la doble página: el impacto ocupa
+                    el pliegue y la mirada recorre la composición de izquierda a derecha.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="emi-nota-legal mt-5 mb-0">
+          <strong>Aviso.</strong> Los paneles pertenecen a <strong>Kentaro Miura</strong> y a
+          <strong>Hakusensha</strong>. Se muestran con fines educativos y de comentario, citando
+          el episodio y el archivo de origen en
+          <a href="https://berserk.fandom.com/wiki/Berserk_Wiki" target="_blank" rel="noopener noreferrer">Berserk Wiki</a>.
+          Este proyecto no reclama licencia alguna sobre las imágenes.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       VISOR AMPLIADO
+       ===================================================================== -->
+  <div class="modal fade modal-panel" id="modalPanel" tabindex="-1" aria-labelledby="tituloPanel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <p class="emi-eyebrow mb-1" id="metaPanel">Episodio 303 · El Halcón Milenario</p>
+            <h2 class="modal-title h4 mb-0" id="tituloPanel">Panel</h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar el visor"></button>
+        </div>
+
+        <div class="modal-body">
+          <figure class="emi-visor">
+            <img id="imagenPanel" src="assets/img/paneles/skull-knight-femto.webp" alt="" width="1100" height="811">
+            <figcaption class="emi-visor__pie">
+              <p class="mb-0" id="descripcionPanel"></p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="modal-footer emi-visor__acciones">
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-fantasma btn-sm" type="button" id="panelAnterior" aria-label="Panel anterior">←</button>
+            <span class="emi-visor__cuenta" id="cuentaPanel">1 / 28</span>
+            <button class="btn btn-fantasma btn-sm" type="button" id="panelSiguiente" aria-label="Panel siguiente">→</button>
+          </div>
+          <a class="btn-enlace" id="fuentePanel" href="https://berserk.fandom.com/wiki/Berserk_Wiki"
+             target="_blank" rel="noopener noreferrer">Ver el archivo original ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       PIE DE PÁGINA
+       ===================================================================== -->
+  <footer class="emi-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-lg-5">
+          <a class="emi-marca mb-3" href="index.html" aria-label="Archivo del Espadachín Negro, ir al inicio">
+            <svg class="emi-marca__sello" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M60 18 L60 62"/><path d="M60 62 L38 96"/><path d="M60 62 L82 96"/><path d="M60 40 L42 28"/>
+              </g>
+            </svg>
+            <span class="emi-marca__texto">
+              <span class="emi-marca__titulo">Berserk</span>
+              <span class="emi-marca__sub">Archivo del Espadachín Negro</span>
+            </span>
+          </a>
+          <p class="small mb-0">
+            Proyecto académico de maquetación con Bootstrap. Sin ánimo de lucro y sin
+            afiliación con los titulares de la obra.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2>Archivo</h2>
+          <ul class="emi-footer__lista">
+            <li><a href="personajes.html">Personajes</a></li>
+            <li><a href="arcos.html">Arcos</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="sugerencias.html">Sugerencias</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h2>Recursos</h2>
+          <ul class="emi-footer__lista">
+            <li><a href="https://berserk.fandom.com/wiki/Berserk_Wiki" target="_blank" rel="noopener noreferrer">Berserk Wiki (Fandom)</a></li>
+            <li><a href="https://es.wikipedia.org/wiki/Berserk_(manga)" target="_blank" rel="noopener noreferrer">Berserk en Wikipedia</a></li>
+            <li><a href="https://getbootstrap.com/docs/5.3/" target="_blank" rel="noopener noreferrer">Documentación de Bootstrap</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG 2.1</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-3">
+          <h2>Estado del proyecto</h2>
+          <p class="small mb-2">Bootstrap 5.3.3 · HTML5 · CSS3 · JavaScript sin dependencias extra.</p>
+          <p class="small mb-0">
+            Galería revisada en <time datetime="2026-10-27">octubre de 2026</time>.
+          </p>
+        </div>
+      </div>
+
+      <p class="emi-footer__legal mb-0">
+        <strong>Berserk</strong> es una obra de Kentaro Miura, continuada por Studio Gaga y
+        Kouji Mori. Los personajes y las ilustraciones pertenecen a sus autores y se emplean
+        aquí únicamente con fines educativos. Los emblemas, la escena de portada y el
+        logotipo son ilustraciones vectoriales propias. © <span data-anio>2026</span> ·
+        Actividad 3.4.2.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/datos.js"></script>
+  <script src="assets/js/paneles.js"></script>
+  <script src="assets/js/comun.js"></script>
+  <script src="assets/js/galeria.js"></script>
+</body>
+</html>

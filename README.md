@@ -2,10 +2,11 @@
 
 <img src="assets/readme/banner.svg" alt="Archivo del Espadachín Negro — wiki temática de Berserk maquetada con Bootstrap 5.3.3" width="100%"/>
 
-**Wiki temática de _Berserk_** — 30 fichas de personajes, seis arcos y un catálogo que se filtra,
-se ordena y se lee igual de bien en un móvil que en un monitor.
+**Wiki temática de _Berserk_** — 30 fichas de personajes, seis arcos y **28 paneles del manga**
+elegidos por su dibujo, en un catálogo que se filtra, se ordena y se lee igual de bien en un móvil
+que en un monitor.
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=21&duration=3200&pause=900&color=E0B06A&center=true&vCenter=true&width=740&lines=30+fichas+de+personaje%3B6+arcos+cronol%C3%B3gicos%3BBootstrap+5.3.3+sin+compilaci%C3%B3n%3BAccesible+AA+desde+320+px" alt="30 fichas, 6 arcos, Bootstrap 5.3.3 sin compilación, accesible desde 320 px"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=21&duration=3200&pause=900&color=E0B06A&center=true&vCenter=true&width=740&lines=30+fichas+de+personaje%3B6+arcos+cronol%C3%B3gicos%3B28+paneles+de+Miura%3BBootstrap+5.3.3+sin+compilaci%C3%B3n%3BAccesible+AA+desde+320+px" alt="30 fichas, 6 arcos, 28 paneles de Miura, Bootstrap 5.3.3 sin compilación, accesible desde 320 px"/>
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -34,10 +35,10 @@ propia que solo aporta el tema visual, y un único archivo de datos que alimenta
 
 <div align="center">
 
-| 📚 **30 fichas** | 🕰️ **6 arcos** | 🧩 **12 componentes** | 📦 **0 dependencias** |
+| 📚 **30 fichas** | 🕰️ **6 arcos** | 🖼️ **28 paneles** | 📦 **0 dependencias** |
 | :--: | :--: | :--: | :--: |
-| Retrato, historia, habilidades y arcos | Del Espadachín Negro a la Era de la Fantasía | De pestañas a carrusel, todos nativos | Solo el bundle de Bootstrap, servido en local |
-| *Un archivo `datos.js` los alimenta* | *Cronología con fichas en modal* | *Sin jQuery ni frameworks* | *Abre con doble clic* |
+| Retrato, historia, habilidades y arcos | Del Espadachín Negro a la Era de la Fantasía | Galería con visor y filtros por arco | Solo el bundle de Bootstrap, servido en local |
+| *Un archivo `datos.js` los alimenta* | *Cronología con fichas en modal* | *Un archivo `paneles.js` los ordena* | *Abre con doble clic* |
 
 </div>
 
@@ -48,12 +49,15 @@ propia que solo aporta el tema visual, y un único archivo de datos que alimenta
 
 <div align="center">
 
-|  |  |  |
-| :--: | :--: | :--: |
-| 🌑 [Acerca del proyecto](#acerca) | 📸 [Vista previa](#vista-previa) | ✨ [Qué incluye](#incluye) |
-| 🧩 [Bootstrap en uso](#bootstrap) | 🗂️ [El archivo en datos](#datos) | 🛠️ [Stack tecnológico](#stack) |
-| 📂 [Estructura](#estructura) | ⚡ [Ejecutar en local](#local) | 🚀 [Despliegue](#despliegue) |
-| ♿ [Accesibilidad](#accesibilidad) | 🧭 [Roadmap](#roadmap) | 👤 [Autor](#autor) |
+|  |  |
+| :--: | :--: |
+| 🌑 [Acerca del proyecto](#acerca) | 📸 [Vista previa](#vista-previa) |
+| ✨ [Qué incluye](#incluye) | 🖼️ [Galería de paneles](#galeria) |
+| 🧩 [Bootstrap en uso](#bootstrap) | 🗂️ [El archivo en datos](#datos) |
+| 🛠️ [Stack tecnológico](#stack) | 📂 [Estructura](#estructura) |
+| ⚡ [Ejecutar en local](#local) | 🚀 [Despliegue](#despliegue) |
+| ♿ [Accesibilidad](#accesibilidad) | 🧭 [Roadmap](#roadmap) |
+| 👤 [Autor](#autor) | 📄 [Créditos](#creditos) |
 
 </div>
 
@@ -97,6 +101,11 @@ y las cifras del panel se actualizan solos.
 | :--: | :--: |
 | <img src="assets/readme/preview-ficha.jpg" alt="Ficha de Griffith abierta en un modal" width="100%"/> | <img src="assets/readme/preview-panel.jpg" alt="Panel con pestañas, listas y carrusel" width="100%"/> |
 | **Retrato, descripción, habilidades y arcos** enlazados | **Pestañas, barras, listas y carrusel** alimentados por `datos.js` |
+
+| Galería de paneles | Visor ampliado |
+| :--: | :--: |
+| <img src="assets/readme/preview-galeria.jpg" alt="Portada de la galería con una doble página del manga" width="100%"/> | <img src="assets/readme/preview-visor.jpg" alt="Visor ampliado de un panel con su descripción" width="100%"/> |
+| **Lámina de apertura** con zoom lento y cinta de miniaturas | **Doble página completa** con anterior, siguiente y fuente |
 
 <img src="assets/readme/preview-movil.jpg" alt="Vista móvil de la portada" width="260"/>
 
@@ -165,7 +174,71 @@ resumen en modal antes de enviar y foco automático en el primer campo inválido
 
 Cada ficha apunta a [Berserk Wiki](https://berserk.fandom.com/wiki/Berserk_Wiki) con
 `target="_blank"` y `rel="noopener noreferrer"`. Esos enlaces aparecen en la tarjeta, en el modal,
-en el carrusel, en el bloque de fuentes externas y en el pie de las cuatro páginas.
+en el carrusel, en el bloque de fuentes externas y en el pie de las cinco páginas.
+
+### 🖼️ Galería de 28 paneles
+
+Una página aparte dedicada solo al dibujo: viñetas y dobles páginas de Kentaro Miura con filtros por
+arco, mampostería, visor ampliado y enlaces directos. Se detalla más abajo, en
+[Galería de paneles](#galeria).
+
+---
+
+<a id="galeria"></a>
+## 🖼️ Galería de paneles
+
+`galeria.html` es una sección aparte, dedicada únicamente al dibujo. Reúne **28 viñetas y dobles
+páginas** del manga elegidas por su tramado, su composición y su uso del negro, cada una con su
+episodio, su arco y un comentario breve sobre cómo está resuelta.
+
+<div align="center">
+
+| Portada de la galería | Rejilla filtrada por arcos |
+| :--: | :--: |
+| <img src="assets/readme/preview-galeria.jpg" alt="Portada de la galería con una doble página de Femto y el Caballero Calavera" width="100%"/> | <img src="assets/readme/preview-rejilla.jpg" alt="Rejilla de paneles en cuatro columnas con filtros por arco" width="100%"/> |
+| **Lámina de apertura** con zoom lento y cinta de miniaturas | **Mampostería de 4 → 1 columnas** con filtros y contador en vivo |
+
+<img src="assets/readme/preview-visor.jpg" alt="Panel abierto en el visor ampliado con su descripción y el enlace a la fuente" width="92%"/>
+
+**Visor ampliado** — doble página a tamaño completo, navegación anterior/siguiente, contador y
+enlace al archivo original de la wiki.
+
+</div>
+
+### 🧱 Cómo está montada
+
+| Pieza | Comportamiento |
+|---|---|
+| 🗃️ **Datos** | `assets/js/paneles.js` guarda los 28 paneles: id, título, episodio, arco, medidas, texto alternativo, comentario y fuente |
+| 🏷️ **Filtros** | Un botón por arco con su recuento; «Todos» vuelve a la colección completa y el estado vacío ofrece limpiar el filtro |
+| 🧱 **Mampostería** | `column-count` de 4 a 1 columnas según el ancho; cada lámina conserva su proporción real, sin recortes |
+| 🔍 **Visor** | Modal de Bootstrap con la imagen a tamaño completo, anterior y siguiente, contador `n / 28` y enlace al archivo de origen |
+| ⌨️ **Teclado** | `←` y `→` cambian de panel con el visor abierto; `Esc` lo cierra; el foco queda atrapado en el modal |
+| 🔗 **Enlace directo** | `galeria.html?panel=eclipse` abre esa lámina al cargar; al cerrar, la URL se limpia sola |
+| 🎲 **Panel al azar** | Dos botones —portada y rejilla— eligen una lámina al azar dentro del filtro activo |
+| 🎞️ **Animaciones** | Zoom lento tipo *Ken Burns* en la apertura, cinta de miniaturas en bucle, aparición al hacer scroll y zoom al pasar el ratón |
+| 🛑 **Sin movimiento** | Todo lo anterior se desactiva con `prefers-reduced-motion: reduce`; el contenido queda visible y estático |
+
+### 🗂️ Reparto por arco
+
+| Arco | Paneles |
+| :-- | :--: |
+| El Espadachín Negro | 2 |
+| La Edad Dorada | 2 |
+| El Eclipse | 2 |
+| La Condena | 4 |
+| El Halcón Milenario | 13 |
+| La Era de la Fantasía | 5 |
+| **Total** | **28** |
+
+Las imágenes se sirven en WebP a 1100 px (versión completa) y 520 px (miniatura `-min`), con
+`srcset` y `sizes` para que el navegador elija. El conjunto pesa unos 7,6 MB, y las miniaturas se
+cargan con `loading="lazy"`.
+
+> **Derechos.** Los paneles pertenecen a **Kentaro Miura** y a **Hakusensha**. Se muestran con fines
+> educativos y de comentario, citando el episodio y el archivo de origen en
+> [Berserk Wiki](https://berserk.fandom.com/wiki/Berserk_Wiki). Este proyecto no reclama licencia
+> alguna sobre las imágenes.
 
 ---
 
@@ -181,7 +254,7 @@ en el carrusel, en el bloque de fuentes externas y en el pie de las cuatro pági
 | Acordeón | Panel del archivo | `accordion` · `accordion-collapse` · `data-bs-parent` |
 | Listas | Facciones y fuentes | `list-group` · `list-group-item-action` |
 | Barras de progreso | Estado de las fichas | `progress` · `progress-bar` · `bg-success` |
-| Modales | Fichas de personaje y arco | `modal` · `modal-dialog-scrollable` · `btn-close` |
+| Modales | Fichas de personaje, arcos y visor de paneles | `modal` · `modal-dialog-scrollable` · `btn-close` |
 | Tarjetas | Catálogo y portada | `card` propio + utilidades `d-flex` · `gap-*` · `h-100` |
 | Tabla responsive | Comparativa del archivo | `table` · `table-striped` · `table-hover` · `table-responsive` |
 | Formularios | Búsqueda y sugerencias | `form-control` · `form-select` · `form-label` · `is-invalid` |
@@ -261,10 +334,10 @@ y el tema oscuro nativo con `data-bs-theme="dark"`.
 | Capa | Tecnología | Detalle |
 | :-- | :-- | :-- |
 | Estructura | **HTML5 semántico** | `main`, `section`, `article`, `nav`, `footer`, encabezados sin saltos |
-| Estilos | **CSS3** | 17 bloques comentados, variables `--emi-*`, `clamp()`, `aspect-ratio`, `prefers-reduced-motion` |
+| Estilos | **CSS3** | 18 bloques comentados, variables `--emi-*`, `clamp()`, `aspect-ratio`, `column-count`, `prefers-reduced-motion` |
 | Interfaz | **Bootstrap 5.3.3** | CSS y bundle JS vendorizados en `assets/vendor/` |
-| Lógica | **JavaScript ES6** | Seis módulos IIFE, sin transpilación ni bundler |
-| Datos | **`datos.js`** | Objeto global `window.BERSERK` con personajes, facciones, estados y arcos |
+| Lógica | **JavaScript ES6** | Siete módulos IIFE, sin transpilación ni bundler |
+| Datos | **`datos.js` + `paneles.js`** | `window.BERSERK` con personajes, facciones, estados y arcos; `window.PANELES` con la galería |
 | Tipografía | **Cinzel + Inter** | Google Fonts con `preconnect` y familias de reserva |
 | Gráficos | **SVG propio** | Emblemas, portada y logotipo generados con `tools/generar_arte.py` |
 | Despliegue | **Vercel** + **GitHub Pages** | Estático, sin build ni funciones |
@@ -281,6 +354,7 @@ y el tema oscuro nativo con `data-bs-theme="dark"`.
 ├── index.html                    Portada, cifras, destacados y ficha técnica
 ├── personajes.html               Catálogo, panel de componentes y tabla comparativa
 ├── arcos.html                    Cronología y fichas de arcos en modal
+├── galeria.html                  Galería de paneles: filtros, rejilla y visor
 ├── sugerencias.html              Formulario validado + preguntas frecuentes
 ├── vercel.json                   Cabeceras de caché, seguridad y redirecciones
 │
@@ -292,10 +366,13 @@ y el tema oscuro nativo con `data-bs-theme="dark"`.
 │   │   ├── comun.js              Navegación, año y animaciones de entrada
 │   │   ├── catalogo.js           Filtros, tarjetas, paginación, ficha y panel
 │   │   ├── arcos.js              Modal de arcos
+│   │   ├── paneles.js            Los 28 paneles de la galería (fuente única)
+│   │   ├── galeria.js            Filtros, mampostería, visor y enlace directo
 │   │   └── formulario.js         Validación, contador y confirmación
 │   ├── img/
 │   │   ├── personajes/           30 retratos (400 px de ancho)
 │   │   ├── arcos/                Emblemas vectoriales de los seis arcos
+│   │   ├── paneles/              28 paneles en WebP + 28 miniaturas `-min`
 │   │   ├── heroe.svg             Escena de portada
 │   │   ├── marca-sacrificio.svg  Marca de sacrificio
 │   │   └── favicon.svg
@@ -376,6 +453,8 @@ vercel --prod
 | :-- | :-- |
 | `/inicio` | `/` |
 | `/fichas` | `/personajes.html` |
+| `/galeria` | `/galeria.html` |
+| `/paneles` | `/galeria.html` |
 | `/personaje/guts` | `/personajes.html?personaje=guts` |
 
 ### 🐙 GitHub Pages (espejo)
@@ -393,7 +472,8 @@ comportamiento del sitio sin las redirecciones de Vercel.
 - Enlace **«Saltar al contenido»** y jerarquía de encabezados sin saltos.
 - Formularios con `<label>` asociado, ayudas por `aria-describedby` y errores anunciados con `aria-live`.
 - Modales de Bootstrap con foco atrapado, cierre por teclado y `aria-modal`.
-- Resultados del catálogo y filtros anunciados con `role="status"`.
+- Visor de la galería con `←`/`→` para cambiar de panel, contador anunciado y enlace directo por URL.
+- Resultados del catálogo, filtros y recuento de paneles anunciados con `role="status"`.
 - Imágenes con texto alternativo; decorativas con `aria-hidden`.
 - Áreas táctiles de 40 px o más y foco visible con anillo dorado.
 - Animaciones desactivadas cuando el sistema pide `prefers-reduced-motion`.
@@ -410,6 +490,7 @@ comportamiento del sitio sin las redirecciones de Vercel.
 - [x] Formulario validado con resumen
 - [x] Panel de componentes Bootstrap con datos en vivo
 - [x] Enlaces externos a la fuente de cada ficha
+- [x] Galería de 28 paneles con filtros, visor y enlaces directos
 - [x] Despliegue en Vercel y GitHub Pages
 - [ ] Buscar sin JavaScript con página de resultados precargada
 - [ ] Modo claro con `data-bs-theme="light"`
@@ -434,6 +515,7 @@ Actividad **3.4.2** · Maquetación web con Bootstrap
 
 ---
 
+<a id="creditos"></a>
 ## 📄 Créditos y licencia
 
 Proyecto **educativo y sin ánimo de lucro**, sin afiliación con los titulares de la obra.
@@ -441,8 +523,10 @@ Proyecto **educativo y sin ánimo de lucro**, sin afiliación con los titulares 
 - **_Berserk_** es una obra de **Kentaro Miura**, continuada por **Studio Gaga** y **Kouji Mori**.
   Personajes e ilustraciones pertenecen a sus autores y se emplean aquí únicamente con fines
   didácticos.
-- Los **retratos** provienen de la wiki pública [berserk.fandom.com](https://berserk.fandom.com/) y
-  **no se redistribuyen con licencia libre**; cada ficha enlaza a su artículo original.
+- Los **retratos** y los **paneles de la galería** provienen de la wiki pública
+  [berserk.fandom.com](https://berserk.fandom.com/) y **no se redistribuyen con licencia libre**;
+  cada ficha y cada panel enlazan a su archivo original. Los paneles se reproducen a resolución
+  reducida y en WebP, con fines de comentario y estudio del dibujo.
 - Los **emblemas de los arcos**, la **escena de portada**, el **logotipo**, el **favicon**, el
   **banner** y el **separador** son ilustraciones vectoriales originales generadas con
   `tools/generar_arte.py` y a mano.

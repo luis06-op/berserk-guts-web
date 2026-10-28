@@ -1117,6 +1117,410 @@ strong { color: #fff8ec; }
 .emi-acordeon .accordion-button::after { filter: invert(1) sepia(.3) saturate(2); }
 .emi-acordeon .accordion-body { color: var(--emi-ceniza); font-size: .88rem; }
 
+/* 18. GALERÍA DE PANELES ================================================== */
+.emi-galeria-hero {
+  position: relative;
+  padding: clamp(7rem, 13vh, 9rem) 0 clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--emi-borde);
+  background:
+    radial-gradient(900px 420px at 82% 6%, rgba(156, 18, 25, .2), transparent 70%),
+    radial-gradient(700px 380px at 4% 90%, rgba(201, 162, 74, .07), transparent 72%),
+    linear-gradient(180deg, #0b0908, var(--emi-tinta));
+  overflow: hidden;
+}
+
+.emi-galeria-hero h1 em {
+  font-style: normal;
+  color: var(--emi-oro);
+  text-shadow: 0 0 38px rgba(201, 162, 74, .28);
+}
+
+.emi-galeria-hero__lamina {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--emi-borde-claro);
+  background: #0a0807;
+  box-shadow: var(--emi-sombra);
+}
+
+.emi-galeria-hero__lamina img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) contrast(1.06);
+  transform-origin: 62% 42%;
+  animation: emi-lamina-zoom 26s ease-in-out infinite alternate;
+}
+
+/* Viñeta sobre la lámina: la integra con el fondo oscuro. */
+.emi-galeria-hero__lamina::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 90px 18px rgba(7, 6, 6, .55);
+}
+
+.emi-galeria-hero__pie {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .4rem 1rem;
+  padding: 1.6rem 1rem .7rem;
+  background: linear-gradient(0deg, rgba(7, 6, 6, .94), transparent);
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--emi-ceniza);
+}
+
+@keyframes emi-lamina-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.07); }
+}
+
+/* Cinta de miniaturas en movimiento continuo. */
+.emi-cinta {
+  position: relative;
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--emi-borde);
+  background: #080706;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.emi-cinta__pista {
+  display: flex;
+  width: max-content;
+  animation: emi-cinta-mover 95s linear infinite;
+}
+
+.emi-cinta:hover .emi-cinta__pista,
+.emi-cinta:focus-within .emi-cinta__pista { animation-play-state: paused; }
+
+.emi-cinta__pista img {
+  height: 104px;
+  width: auto;
+  margin-right: .7rem;
+  border: 1px solid var(--emi-borde);
+  filter: grayscale(1) brightness(.78) contrast(1.05);
+  transition: filter var(--emi-transicion), transform var(--emi-transicion);
+}
+
+.emi-cinta__pista img:hover { filter: none; transform: translateY(-2px); }
+
+@keyframes emi-cinta-mover {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Barra de filtros y contador. */
+.emi-toolbar-galeria {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--emi-borde);
+}
+
+.emi-filtros { display: flex; flex-wrap: wrap; gap: .45rem; }
+
+.emi-icono { vertical-align: -2px; margin-right: .3rem; }
+
+.emi-filtro {
+  padding: .42rem .8rem;
+  border: 1px solid var(--emi-borde);
+  border-radius: 999px;
+  background: rgba(20, 16, 14, .65);
+  color: var(--emi-ceniza);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: color var(--emi-transicion), background var(--emi-transicion),
+              border-color var(--emi-transicion);
+}
+
+.emi-filtro:hover {
+  color: var(--emi-hueso);
+  border-color: var(--emi-borde-claro);
+}
+
+.emi-filtro:focus-visible {
+  outline: 2px solid var(--emi-oro);
+  outline-offset: 2px;
+}
+
+.emi-filtro[aria-pressed="true"] {
+  color: #1b1207;
+  background: var(--emi-oro);
+  border-color: var(--emi-oro);
+}
+
+.emi-filtro__n {
+  margin-left: .35rem;
+  font-variant-numeric: tabular-nums;
+  opacity: .7;
+}
+
+/* Rejilla tipo mampostería: cada lámina conserva su proporción. */
+.emi-rejilla-paneles { column-count: 4; column-gap: 1.1rem; }
+
+.emi-lamina {
+  position: relative;
+  break-inside: avoid;
+  margin: 0 0 1.1rem;
+  border: 1px solid var(--emi-borde);
+  background: #0b0908;
+}
+
+.js .emi-lamina {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.js .emi-lamina.is-visible { opacity: 1; transform: none; }
+
+.emi-lamina__boton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: zoom-in;
+}
+
+.emi-lamina__media { position: relative; overflow: hidden; }
+
+.emi-lamina__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 700ms cubic-bezier(.16, .84, .28, 1), filter 400ms ease;
+}
+
+.emi-lamina__boton:hover img,
+.emi-lamina__boton:focus-visible img {
+  transform: scale(1.04);
+  filter: contrast(1.08) brightness(1.05);
+}
+
+.emi-lamina__zoom {
+  position: absolute;
+  top: .6rem;
+  right: .6rem;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(239, 231, 216, .4);
+  background: rgba(7, 6, 6, .6);
+  color: var(--emi-hueso);
+  font-size: .8rem;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity var(--emi-transicion), transform var(--emi-transicion);
+}
+
+.emi-lamina__boton:hover .emi-lamina__zoom,
+.emi-lamina__boton:focus-visible .emi-lamina__zoom {
+  opacity: 1;
+  transform: none;
+}
+
+.emi-lamina__cuerpo {
+  padding: .7rem .85rem .85rem;
+  border-top: 1px solid var(--emi-borde);
+}
+
+.emi-lamina__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--emi-ceniza-oscura);
+}
+
+.emi-lamina__titulo {
+  margin: .35rem 0 0;
+  font-family: var(--emi-display);
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--emi-hueso);
+}
+
+.emi-lamina__boton:focus-visible { outline: 2px solid var(--emi-oro); outline-offset: -2px; }
+
+/* Fichas de análisis del trazo. */
+.emi-seccion--borde { border-top: 1px solid var(--emi-borde); }
+
+.emi-trazo {
+  height: 100%;
+  padding: 1.3rem;
+  border: 1px solid var(--emi-borde);
+  background: linear-gradient(160deg, #14100e, #0a0807);
+}
+
+.emi-trazo__num {
+  font-family: var(--emi-display);
+  font-size: .8rem;
+  letter-spacing: .22em;
+  color: var(--emi-brasa);
+}
+
+.emi-trazo h3 { margin: .55rem 0 .5rem; font-size: 1.02rem; }
+
+.emi-trazo p {
+  margin: 0;
+  font-size: .86rem;
+  line-height: 1.6;
+  color: var(--emi-ceniza);
+}
+
+/* Avance de la galería en la portada. */
+.emi-avance {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--emi-borde);
+  background: #0b0908;
+}
+
+.emi-avance img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) contrast(1.05);
+  transition: transform 650ms cubic-bezier(.16, .84, .28, 1), filter 400ms ease;
+}
+
+.emi-avance:hover img,
+.emi-avance:focus-visible img {
+  transform: scale(1.045);
+  filter: none;
+}
+
+.emi-avance:focus-visible { outline: 2px solid var(--emi-oro); outline-offset: -2px; }
+
+.emi-avance__pie {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1.8rem .75rem .7rem;
+  background: linear-gradient(0deg, rgba(7, 6, 6, .96), transparent);
+  font-size: .74rem;
+  line-height: 1.4;
+  color: var(--emi-ceniza);
+}
+
+.emi-avance__pie strong {
+  display: block;
+  margin-bottom: .15rem;
+  color: var(--emi-oro);
+  font-size: .58rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.emi-nota-legal {
+  padding-top: 1.2rem;
+  border-top: 1px dashed var(--emi-borde);
+  font-size: .78rem;
+  line-height: 1.65;
+  color: var(--emi-ceniza-oscura);
+}
+
+.emi-aviso {
+  padding: 1rem 1.2rem;
+  border: 1px dashed var(--emi-borde-claro);
+  color: var(--emi-ceniza);
+  font-size: .9rem;
+}
+
+/* Visor ampliado. */
+.modal-panel .modal-content {
+  background: #070606;
+  border: 1px solid var(--emi-borde-claro);
+  border-radius: var(--emi-radio);
+  box-shadow: 0 40px 90px -40px #000;
+}
+
+.modal-panel .modal-header { border-bottom: 1px solid var(--emi-borde); padding: 1rem 1.2rem; }
+.modal-panel .modal-body { padding: 1.1rem; }
+.modal-panel .modal-footer { border-top: 1px solid var(--emi-borde); padding: .9rem 1.2rem; }
+.modal-panel .btn-close { filter: invert(1) grayscale(1) brightness(1.8); opacity: .7; }
+.modal-panel .btn-close:hover { opacity: 1; }
+
+.emi-visor { margin: 0; }
+
+.emi-visor img {
+  display: block;
+  width: 100%;
+  max-height: 58vh;
+  object-fit: contain;
+  background: #000;
+  border: 1px solid var(--emi-borde);
+}
+
+.emi-visor__pie {
+  padding-top: .9rem;
+  max-width: 78ch;
+  font-size: .88rem;
+  line-height: 1.65;
+  color: var(--emi-ceniza);
+}
+
+.emi-visor__acciones { justify-content: space-between; gap: 1rem; }
+
+.emi-visor__cuenta {
+  min-width: 4.5rem;
+  text-align: center;
+  font-size: .76rem;
+  letter-spacing: .12em;
+  color: var(--emi-ceniza);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Adaptación de la galería. */
+@media (max-width: 1199.98px) {
+  .emi-rejilla-paneles { column-count: 3; }
+}
+
+@media (max-width: 767.98px) {
+  .emi-rejilla-paneles { column-count: 2; }
+  .emi-cinta__pista img { height: 82px; }
+  .emi-galeria-hero__lamina { margin-top: .5rem; }
+}
+
+@media (max-width: 479.98px) {
+  .emi-rejilla-paneles { column-count: 1; }
+  .emi-toolbar-galeria { align-items: stretch; }
+}
+
+/* Sin movimiento: fuera animaciones, el contenido queda visible. */
+@media (prefers-reduced-motion: reduce) {
+  .emi-galeria-hero__lamina img { animation: none; }
+  .emi-cinta__pista { animation: none; }
+  .emi-lamina__media img { transition: none; }
+  .emi-lamina__boton:hover img,
+  .emi-lamina__boton:focus-visible img { transform: none; }
+  .js .emi-lamina { opacity: 1; transform: none; transition: none; }
+}
+
 /* Impresión: versión legible en papel. */
 @media print {
   body { background: #fff !important; color: #111 !important; }
